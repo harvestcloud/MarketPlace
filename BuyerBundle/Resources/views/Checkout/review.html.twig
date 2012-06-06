@@ -1,0 +1,11 @@
+{% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
+
+{% block buyer_content %}
+    <h1>Review Order</h1>
+    <p>Alright, we're almost there! Time to make one last pre-flight check and then hit that big ol' button</p>
+    <p>
+        <form method="post" action="{{ path('Buyer_checkout_place_order') }}">
+            <input type="submit" class="submit" value="Place order" />
+        </form>
+    </p>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
+
+{% block buyer_content %}
+    <h1>Select Delivery/Pickup</h1>
+    {% for order in orderCollection.orders %}
+        <h3>{{ order.seller.name }}</h3>
+        {% for sellerHubRef in order.seller.sellerHubRefsAsSeller %}
+            <h4>{{ sellerHubRef.hub.name }}</h4>
+            <ul>
+                {% for pickupWindow in sellerHubRef.pickupWindows %}
+                    <li>
+                        <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'hub_id': sellerHubRef.hub.id, 'start_time': pickupWindow.startTime|date('U')} ) }}">
+                          {{ pickupWindow.startTime|date('H:i') }}
+                          -
+                          {{ pickupWindow.endTime|date('H:i') }}
+                          {{ pickupWindow.startTime|date('D j F Y') }}
+                          <input type="submit" class="submit" value="Select" />
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

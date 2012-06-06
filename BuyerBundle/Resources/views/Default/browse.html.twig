@@ -1,0 +1,25 @@
+{% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Welcome to the Harvest Cloud</h1>
+
+    <h3>Products nearby</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Price</th>
+            <th><abbr title="Quantity">Qty</abbr> available</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+              <td><a href="{{ path('Buyer_product_show', { 'id': product.id, 'path': product.category.path }) }}">{{ product.name }}</a></td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.location.name }}</td>
+              <td>${{ product.price }}</td>
+              <td>{{ product.quantityAvailable }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

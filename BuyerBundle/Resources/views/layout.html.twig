@@ -1,0 +1,27 @@
+{% extends 'HarvestCloudMarketPlaceCoreBundle::layout.html.twig' %}
+
+{% block subnav %}
+    <div id="subnav">
+        Buy:
+        <a href="{{ path('Buyer_profile') }}">Profiles</a>
+        |
+        Current Profile:
+        <a href="{{ path('Buyer_profile_current') }}">{{ app.user.currentProfile.name }}</a>
+        |
+        <a href="{{ path('Buyer_hub_nearby') }}">Nearby Hubs</a>
+        |
+        <a href="{{ path('Buyer_order') }}">Orders</a>
+    </div><!-- #subnav -->
+    <hr />
+{% endblock %}
+
+{% block content %}
+    <div id="primaryContent">
+        {% block buyer_content %}{% endblock %}
+    </div><!-- #primaryContent -->
+    <div id="secondaryContent">
+        <h1>My Cart</h1>
+        {% render "HarvestCloudMarketPlaceBuyerBundle:Cart:mini" %}
+    </div><!-- #secondaryContent -->
+    <div class="clear"></div>
+{% endblock %}
