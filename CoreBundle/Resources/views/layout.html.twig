@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}FoodBy.us{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+        <link href="/css/sandbox/style.css" rel="stylesheet" type="text/css" media="all" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block map_js %}
+        {% endblock %}
+
+    </head>
+    <body>
+        <div class="logo_and_main_nav">
+            <div class="main_logo">
+                <strong><a href="{{ path('_welcome') }}"><img src="/images/header_logo.png" alt="FoodBy.Us" title="FoodBy.Us" /></a></strong>
+            </div><!-- .main_logo -->
+            <div class="main nav">
+                <a href="{{ path('Buyer_homepage') }}">Buy</a>
+                |
+                <a href="{{ path('Seller_homepage') }}">Sell</a>
+                |
+                <a href="{{ path('Hub_homepage') }}">Hub</a>
+            </div><!--.main.nav -->
+        </div>
+        <hr />
+        {% block subnav %}
+        {% endblock %}
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div><!-- #content -->
+
+        <hr />
+        <div id="footer">
+            <p>
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.fullname}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_change_password') }}">Change password</a>
+                    |
+                    <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
+                {% else %}
+                    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    |
+                    <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                {% endif %}
+                |
+                <a href="{{ path('Admin_homepage') }}">Admin</a>
+            </p>
+            <p>Powered by the Harvest Cloud</p>
+        </div><!-- #footer -->
+    </body>
+</html>
