@@ -1,0 +1,91 @@
+Seller_homepage:
+    pattern:  /
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Welcome:index }
+
+Seller_hub_nearby:
+    pattern:  /hubs/nearby
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Hub:nearby }
+
+Seller_hub_show:
+    pattern:  /hubs/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Hub:show }
+    requirements:
+        id: \d+
+
+
+Seller_order:
+    pattern:  /orders
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:index }
+
+Seller_order_accept:
+    pattern:  /order/{id}/accept
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:accept }
+    requirements:
+        id: \d+
+        _method: POST
+
+Seller_order_reject:
+    pattern:  /order/{id}/reject
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:reject }
+    requirements:
+        id: \d+
+        _method: POST
+
+Seller_order_pick:
+    pattern:  /order/{id}/pick
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:pick }
+    requirements:
+        id: \d+
+        _method: POST
+
+Seller_order_mark_ready_for_dispatch:
+    pattern:  /order/{id}/mark-ready-for-dispatch
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:mark_ready_for_dispatch }
+    requirements:
+        id: \d+
+        _method: POST
+
+Seller_order_dispatch:
+    pattern:  /order/{id}/dispatch
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:dispatch }
+    requirements:
+        id: \d+
+        _method: POST
+
+
+Seller_hub_add:
+    pattern:  /hub/{id}/add
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Hub:add }
+    requirements:
+        id: \d+
+        _method: POST
+
+Seller_product_show:
+    pattern:  /product/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:show }
+    requirements:
+        id: \d+
+
+Seller_product_new:
+    pattern:  /product/new
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:new }
+    requirements:
+        _method: GET
+
+Seller_product_create:
+    pattern:  /product/new
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:new }
+    requirements:
+        _method: POST
+
+Seller_hub_pickup_window_new:
+    pattern:  /hubs/{id}/new-pickup-window
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_pickup_window }
+    requirements:
+        _method: GET
+
+Seller_hub_pickup_window_create:
+    pattern:  /hubs/{id}/new-pickup-window
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_pickup_window }
+    requirements:
+        _method: POST

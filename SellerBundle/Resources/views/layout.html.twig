@@ -1,0 +1,17 @@
+{% extends 'HarvestCloudMarketPlaceCoreBundle::layout.html.twig' %}
+
+{% block subnav %}
+    <div id="subnav">
+        Sell:
+        <a href="{{ path('Seller_product_new') }}">New Product</a>
+        |
+        <a href="{{ path('Seller_hub_nearby') }}">Nearby Hubs</a>
+        |
+        <a href="{{ path('Seller_order') }}">Orders</a>
+    </div><!-- #subnav -->
+    <hr />
+{% endblock %}
+
+{% block content %}
+    {% block seller_content %}{% endblock %}
+{% endblock %}
