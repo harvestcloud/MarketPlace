@@ -1,6 +1,6 @@
 Seller_homepage:
     pattern:  /
-    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Welcome:index }
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Default:index }
 
 Seller_hub_nearby:
     pattern:  /hubs/nearby

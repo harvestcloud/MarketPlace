@@ -12,10 +12,10 @@ namespace HarvestCloud\MarketPlace\SellerBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class WelcomeController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('HarvestCloudMarketPlaceSellerBundle:Welcome:index.html.twig');
+        return $this->render('HarvestCloudMarketPlaceSellerBundle:Default:index.html.twig');
     }
 }
