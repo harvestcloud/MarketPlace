@@ -1,0 +1,106 @@
+Buyer_homepage:
+    pattern:  /
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Default:index }
+
+Buyer_hub_nearby:
+    pattern:  /hub/nearby
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Hub:nearby }
+
+Buyer_hub_show:
+    pattern:  /hub/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Hub:show }
+    requirements:
+        id: \d+
+
+Buyer_hub_add:
+    pattern:  /hub/{id}/add
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Hub:add }
+    requirements:
+        id: \d+
+        _method: POST
+
+
+Buyer_order:
+    pattern:  /orders
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:index }
+
+Buyer_order_cancel:
+    pattern:  /order/{id}/cancel
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:cancel }
+    requirements:
+        id: \d+
+        _method: POST
+
+Buyer_order_rate:
+    pattern:  /order/{id}/rate/{rating}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:rate }
+    requirements:
+        id: \d+
+        rating: '[1-5]'
+        _method: POST
+
+
+Buyer_seller_show:
+    pattern:  /seller/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Seller:show }
+    requirements:
+        id: \d+
+
+Buyer_profile_current:
+    pattern:  /profile/current
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Profile:current }
+
+Buyer_profile:
+    pattern:  /profile
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Profile:index }
+
+
+Buyer_cart_add_product:
+    pattern:  /cart/add-product/{product_id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Cart:addProduct }
+    requirements:
+        _method: POST
+
+
+Buyer_checkout_select_pickup_windows_for_collection:
+    pattern:  /checkout/select-pickup-window/{hub_id}/{start_time}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:select_pickup_window_for_collection }
+    requirements:
+        _method: POST
+
+Buyer_checkout_pickup_windows:
+    pattern:  /checkout/pickup-windows
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:pickup_windows_for_collection }
+    requirements:
+        _method: GET
+
+Buyer_checkout_review:
+    pattern:  /checkout/review
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:review }
+
+Buyer_checkout_place_order:
+    pattern:  /checkout/place-order
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:place_order }
+    requirements:
+        _method: POST
+
+Buyer_checkout_complete_paypal:
+    pattern:  /checkout/complete-paypal
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:complete_paypal }
+
+Buyer_checkout_receipt:
+    pattern:  /checkout/thank-you
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:receipt }
+
+Buyer_product_show:
+    pattern:  /{path}/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Product:show }
+    requirements:
+        path: ".*"
+        id: \d+
+
+Buyer_browse:
+    pattern:  /{path}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Default:browse }
+    requirements:
+        path: ".*"

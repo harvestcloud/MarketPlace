@@ -1,0 +1,7 @@
+parameters:
+#    harvest_cloud_market_place_buyer.example.class: HarvestCloud\MarketPlace\BuyerBundle\Example
+
+services:
+#    harvest_cloud_market_place_buyer.example:
+#        class: %harvest_cloud_market_place_buyer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
