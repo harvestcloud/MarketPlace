@@ -1,0 +1,30 @@
+Hub_homepage:
+    pattern:  /
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Default:index }
+
+
+Hub_order:
+    pattern:  /orders
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:index }
+
+Hub_order_receive:
+    pattern:  /order/{id}/receive
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Order:receive }
+    requirements:
+        id: \d+
+        _method: POST
+
+Hub_order_mark_as_ready_to_pickup:
+    pattern:  /order/{id}/mark-as-ready-to-pickup
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Order:mark_as_ready_to_pickup }
+    requirements:
+        id: \d+
+        _method: POST
+
+Hub_order_release:
+    pattern:  /order/{id}/release
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Order:release }
+    requirements:
+        id: \d+
+        _method: POST
+
