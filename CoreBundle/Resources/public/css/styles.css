@@ -1,0 +1,46 @@
+/*
+ * This file is part of the Harvest Cloud package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+/******************************************************************************
+
+general
+
+******************************************************************************/
+
+a
+{
+    text-decoration: inherit;
+}
+
+body
+{
+    font-size: 62.5%;
+    font-family: arial, sans-serif;
+}
+
+/******************************************************************************
+
+logo and main nav
+
+******************************************************************************/
+
+div.main_logo img
+{
+    max-width: 100%;
+}
+
+div.main.nav
+{
+    text-transform: uppercase;
+}
+
+div.main.nav a
+{
+    font-size: 120%;
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(0,0,0, 0.4);
+}

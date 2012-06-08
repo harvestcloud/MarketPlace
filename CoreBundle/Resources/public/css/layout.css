@@ -5,12 +5,6 @@
  * file that was distributed with this source code.
  */
 
-body
-{
-    background: #62da9a;
-}
-
-
 /******************************************************************************
 
 logo and main nav
@@ -19,15 +13,18 @@ logo and main nav
 
 div.main.nav
 {
-    background: #228751;
+    margin: 1em 0;
+}
+
+div.main.nav,
+div.main.nav a
+{
+    border-radius: 5px;
 }
 
 div.main.nav a
 {
-    color: #fff;
-}
-
-div.main.nav a:hover
-{
-    background: #007536;
+    display: block;
+    padding: 2em 3em;
+    float: left;
 }

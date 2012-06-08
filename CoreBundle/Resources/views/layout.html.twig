@@ -5,6 +5,8 @@
         <title>{% block title %}Harvest Cloud{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         <link href="/css/sandbox/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="{{ asset('bundles/marketplacecore/css/layout.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/marketplacecore/css/styles.css') }}" type="text/css" rel="stylesheet" />
         <link href="{{ asset('bundles/marketplacecore/css/colors.css') }}" type="text/css" rel="stylesheet" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,10 +21,9 @@
             </div><!-- .main_logo -->
             <div class="main nav">
                 <a href="{{ path('Buyer_homepage') }}">Buy</a>
-                |
                 <a href="{{ path('Seller_homepage') }}">Sell</a>
-                |
                 <a href="{{ path('Hub_homepage') }}">Hub</a>
+                <span class="clear"></span>
             </div><!--.main.nav -->
         </div>
         <hr />
