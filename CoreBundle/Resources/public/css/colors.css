@@ -5,9 +5,36 @@
  * file that was distributed with this source code.
  */
 
+a
+{
+    color: #ff3900;
+}
+
 body
 {
     background: #62da9a;
+    color: #bf5030;
+}
+
+/******************************************************************************
+
+table
+
+******************************************************************************/
+
+table thead tr th
+{
+    background: rgba(0,0,0, 0.15);
+}
+
+table tbody tr td
+{
+    background: rgba(0,0,0, 0.1);
+}
+
+table tbody tr:nth-of-type(odd) td
+{
+    background: rgba(0,0,0, 0.05);
 }
 
 
@@ -30,4 +57,15 @@ div.main.nav a
 div.main.nav a:hover
 {
     background: #007536;
+}
+
+/******************************************************************************
+
+footer
+
+******************************************************************************/
+
+#footer
+{
+    background: rgba(0,0,0, 0.1);
 }
