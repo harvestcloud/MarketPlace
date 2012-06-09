@@ -31,8 +31,24 @@ div.main.nav
 div.main.nav a
 {
     display: block;
-    padding: 2em 3em;
+    padding: 2em 0;
+    width: 8em;
+    max-width: 25%;
     float: left;
+    text-align: center;
+    line-height: 100%;
+}
+
+div.main.nav a.settings
+{
+    padding: 1.66666666em 0;
+    float: right;
+}
+
+div.main.nav a.settings img
+{
+    width: 20px;
+    height: 20px;
 }
 
 /******************************************************************************
