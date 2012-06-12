@@ -53,6 +53,74 @@ div.main.nav a.settings img
 
 /******************************************************************************
 
+forms
+
+******************************************************************************/
+
+form div.form.row
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+form div.form.row label,
+form div.form.row span.input.holder
+{
+    display: block;
+}
+
+form div.form.row label
+{
+    margin-bottom: 0.5em;
+}
+
+form div.form.row label.checkbox
+{
+    display: inline;
+}
+
+form div.buttons.form.row
+{
+    background: none;
+    padding: 1em 0;
+}
+
+input[type="text"],
+input[type="password"]
+{
+    width: 20em;
+    max-width: 100%;
+    padding: 1em;
+}
+
+form div.form.row input.submit.button
+{
+    padding: 0.5em 2em;
+}
+
+/******************************************************************************
+
+forms
+
+******************************************************************************/
+
+div.two_equal_columns div.column
+{
+    width: 49%;
+}
+
+div.two_equal_columns div.left.column
+{
+    float: left;
+}
+
+div.two_equal_columns div.right.column
+{
+    float: right;
+}
+
+/******************************************************************************
+
 footer
 
 ******************************************************************************/
