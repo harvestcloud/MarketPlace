@@ -22,6 +22,14 @@ body
     font-family: arial, sans-serif;
 }
 
+h1
+{
+    font-weight: normal;
+    font-size: 3em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
 /******************************************************************************
 
 table
@@ -80,6 +88,43 @@ div.main.nav a.settings
   -moz-border-radius-bottomright: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+/******************************************************************************
+
+forms
+
+******************************************************************************/
+
+form div.form.row
+{
+    border-radius: 5px;
+}
+
+form div.form.row label,
+form div.form.row input
+{
+    font-size: 1.4em;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+form div.form.row label
+{
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="password"]
+{
+    border-radius: 5px;
+}
+
+input.submit.button
+{
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
 }
 
 /******************************************************************************
