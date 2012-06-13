@@ -7,13 +7,14 @@
 
 a
 {
-    color: #ff3900;
+    color: #677586;
+    font-weight: bold;
 }
 
 body
 {
-    background: #62da9a;
-    color: #bf5030;
+    background: #fff3e0 url(/bundles/marketplacecore/images/bg_body.png) scroll repeat center top;
+    color: #958770;
 }
 
 /******************************************************************************
@@ -46,7 +47,7 @@ logo and main nav
 
 div.main.nav
 {
-    background: #228751;
+    background: rgba(149,135,112, 0.7);
 }
 
 div.main.nav a
@@ -56,7 +57,7 @@ div.main.nav a
 
 div.main.nav a:hover
 {
-    background: #007536;
+    background: rgba(149,135,112, 0.8);
 }
 
 /******************************************************************************
@@ -91,9 +92,9 @@ input[type="password"]
 
 input.submit.button
 {
-    color: rgba(255,255,255, 0.9);
-    border: 1px solid rgba(0,0,0, 0.45);
-    background: rgba(0,0,0, 0.4);
+    color: rgba(255,255,255, 1);
+    border: 1px solid rgba(103,117,134, 0.5);
+    background: #8bb4e5 url(/bundles/marketplacecore/images/bg_button.png) scroll repeat-x left top;
     text-shadow: 0 -1px 1px rgba(0,0,0, 0.4);
 }
 
