@@ -5,6 +5,11 @@
  * file that was distributed with this source code.
  */
 
+body
+{
+    margin: 10px 15px;
+}
+
 /******************************************************************************
 
 page
@@ -59,8 +64,7 @@ forms
 
 form div.form.row
 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin: 1.5em 0;
 }
 
 form div.form.row label,
@@ -71,7 +75,7 @@ form div.form.row span.input.holder
 
 form div.form.row label
 {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.3em;
 }
 
 form div.form.row label.checkbox
@@ -82,7 +86,6 @@ form div.form.row label.checkbox
 form div.buttons.form.row
 {
     background: none;
-    padding: 1em 0;
 }
 
 input[type="text"],
