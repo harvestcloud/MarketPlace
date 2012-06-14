@@ -82,6 +82,7 @@ form div.form.row label
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"]
 {
     color: rgba(0,0,0, 0.6);

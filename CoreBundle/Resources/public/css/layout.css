@@ -5,9 +5,64 @@
  * file that was distributed with this source code.
  */
 
+/******************************************************************************
+
+general
+
+******************************************************************************/
+
 body
 {
     margin: 10px 15px;
+}
+
+
+.clear
+{
+    display: block;
+    clear: both;
+}
+
+/******************************************************************************
+
+table
+
+******************************************************************************/
+
+table
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th,
+table td
+{
+    padding: 0.833333333em;
+}
+
+table th
+{
+    text-align: left;
+}
+
+td.actions form
+{
+    float: left;
+}
+
+table.standard tr:nth-of-type(odd) td {
+}
+
+
+table.nvp tr th
+{
+    width: 30%;
+}
+
+table.nvp tr td
+{
+    width: 70%;
 }
 
 /******************************************************************************
@@ -89,6 +144,7 @@ form div.buttons.form.row
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"]
 {
     width: 20em;
@@ -103,7 +159,7 @@ form div.form.row input.submit.button
 
 /******************************************************************************
 
-forms
+columns
 
 ******************************************************************************/
 
@@ -132,4 +188,75 @@ footer
 {
     margin-top: 3em;
     padding: 2em 3em;
+}
+
+/*
+* Tablets portrait
+*/
+@media
+only screen and (max-width: 820px)
+{
+    /* Force table to not be like tables anymore */
+    table.standard,
+    table.standard thead,
+    table.standard tbody,
+    table.standard th,
+    table.standard td,
+    table.standard tr
+    {
+        display: block;
+    }
+
+    table.standard
+    {
+      border: none;
+    }
+
+    div.map_canvas
+    {
+        margin: 1em 0;
+    }
+
+    /* Collapse two_equal_columns */
+    div.two_equal_columns div.left.column,
+    div.two_equal_columns div.right.column
+    {
+        float: none;
+        width: 100%;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    table.standard thead tr
+    {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    table.standard tr
+    {
+        float: left;
+        width: 23.8%;
+        margin: 1.333333% 0 1.333333% 1.333333%;
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+    }
+
+    table.standard tr:nth-of-type(1),
+    table.standard tr:nth-of-type(4n+1)
+    {
+      margin-left: 0;
+    }
+
+
+    table.standard tr td
+    {
+        border: none;
+        border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    table.standard td:nth-of-type(1)
+    {
+        border: none;
+    }
 }
