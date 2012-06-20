@@ -37,18 +37,14 @@
 
             <div id="footer">
                 <p>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                         {{ 'layout.logged_in_as'|trans({'%username%': app.user.fullname}, 'FOSUserBundle') }} |
                         <a href="{{ path('fos_user_change_password') }}">Change password</a>
                         |
                         <a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
                         |
-                        <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                        <a href="{{ path('Admin_homepage') }}">Admin</a>
                     {% endif %}
-                    |
-                    <a href="{{ path('Admin_homepage') }}">Admin</a>
                 </p>
             </div><!-- #footer -->
         </div><!-- #page -->
