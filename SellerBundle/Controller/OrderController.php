@@ -13,6 +13,7 @@ use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Control
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use HarvestCloud\NotifierBundle\Events\OrderAcceptedBySellerEvent;
+use HarvestCloud\NotifierBundle\Events\OrderDispatchedBySellerEvent;
 use HarvestCloud\CoreBundle\Entity\Order;
 use HarvestCloud\CoreBundle\Entity\Profile;
 
@@ -155,21 +156,10 @@ class OrderController extends Controller
         $invoice = new \HarvestCloud\InvoiceBundle\Entity\OrderInvoice();
         $invoice->setAmount($order->getAmountForPaymentGateway());
         $em->persist($invoice);
-
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Your order has been dispatched')
-            ->setFrom(array('no-reply@harvestcloud.com' => 'Harvest Cloud'))
-            ->setTo(array('buyer@example.com' => 'Buyer Name'))
-            ->setBody($this->renderView(
-                'HarvestCloudEmailBundle:Buyer:order_dispatched_by_seller.txt.twig', array(
-                    'order' => $order
-            )))
-        ;
-
-        $this->get('mailer')->send($message);
-
         $em->persist($order);
         $em->flush();
+
+        $this->get('notifier')->notify(new OrderDispatchedBySellerEvent($order), $this->getUser());
 
         return $this->redirect($this->generateUrl('Seller_order'));
     }
