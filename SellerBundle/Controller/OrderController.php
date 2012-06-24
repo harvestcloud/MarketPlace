@@ -10,9 +10,11 @@
 namespace HarvestCloud\MarketPlace\SellerBundle\Controller;
 
 use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Controller;
-use HarvestCloud\CoreBundle\Entity\Order;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use HarvestCloud\NotifierBundle\Events\OrderAcceptedBySellerEvent;
+use HarvestCloud\CoreBundle\Entity\Order;
+use HarvestCloud\CoreBundle\Entity\Profile;
 
 /**
  * OrderController
@@ -56,21 +58,11 @@ class OrderController extends Controller
     {
         $order->acceptBySeller();
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Your order has been accepted')
-            ->setFrom(array('no-reply@harvestcloud.com' => 'Harvest Cloud'))
-            ->setTo(array('buyer@example.com' => 'Buyer Name'))
-            ->setBody($this->renderView(
-                'HarvestCloudEmailBundle:Buyer:order_accepted_by_seller.txt.twig', array(
-                    'order' => $order
-            )))
-        ;
-
-        $this->get('mailer')->send($message);
-
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($order);
         $em->flush();
+
+        $this->get('notifier')->notify(new OrderAcceptedBySellerEvent($order), $this->getUser());
 
         return $this->redirect($this->generateUrl('Seller_order'));
     }
