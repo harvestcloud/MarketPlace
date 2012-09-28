@@ -59,6 +59,11 @@ class ProductController extends Controller
         $product = new Product();
         $form = $this->createForm(new ProductType(), $product);
 
+        // During the Eggbox stage, we'll hard code the Category
+        $product->setCategory($this->getDoctrine()
+            ->getRepository('HarvestCloudCoreBundle:Category')
+            ->find(10));
+
         if ($request->getMethod() == 'POST')
         {
             $form->bindRequest($request);
