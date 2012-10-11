@@ -42,6 +42,7 @@ class WindowMakerController extends Controller
           'windowMakers' => $windowMakers,
         ));
     }
+
     /**
      * show
      *
