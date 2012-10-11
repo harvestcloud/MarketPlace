@@ -78,8 +78,16 @@ Seller_product_create:
     requirements:
         _method: POST
 
+
+Seller_seller_hub_pickup_window:
+    pattern:  /pickup-window
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubPickupWindow:index }
+    requirements:
+        _method: GET
+
+
 Seller_hub_pickup_window_new:
-    pattern:  /hubs/{id}/new-pickup-window
+    pattern:  /hubs/{id}/pickup-window/new
     defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_pickup_window }
     requirements:
         _method: GET
