@@ -4,6 +4,8 @@
     <h1>New Window Maker</h1>
     <form action="{{ path('Seller_window_maker_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
-        <input type="submit" class="submit" value="Save" />
+        <div class="form row">
+            <input type="submit" class="submit button" value="Save" />
+        </div><!-- .form.row -->
     </form>
 {% endblock %}
