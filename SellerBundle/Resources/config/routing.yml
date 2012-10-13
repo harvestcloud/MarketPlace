@@ -60,6 +60,11 @@ Seller_hub_add:
         id: \d+
         _method: POST
 
+
+Seller_product:
+    pattern:  /product
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:index }
+
 Seller_product_show:
     pattern:  /product/{id}
     defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:show }

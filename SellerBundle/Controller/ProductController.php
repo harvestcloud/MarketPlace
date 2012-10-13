@@ -9,7 +9,7 @@
 
 namespace HarvestCloud\MarketPlace\SellerBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HarvestCloud\CoreBundle\Entity\Product;
 use HarvestCloud\CoreBundle\Form\ProductType;
@@ -22,6 +22,23 @@ use HarvestCloud\CoreBundle\Form\ProductType;
  */
 class ProductController extends Controller
 {
+    /**
+     * index
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-10
+     */
+    public function indexAction()
+    {
+        $products = $this->getRepo('Product')
+            ->findForSeller($this->getCurrentProfile())
+        ;
+
+        return $this->render('HarvestCloudMarketPlaceSellerBundle:Product:index.html.twig', array(
+          'products' => $products,
+        ));
+    }
+
     /**
      * show
      *
