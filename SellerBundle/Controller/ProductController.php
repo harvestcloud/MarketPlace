@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function indexAction()
     {
         $products = $this->getRepo('Product')
-            ->findForSeller($this->getCurrentProfile())
+            ->findOpenForSeller($this->getCurrentProfile())
         ;
 
         return $this->render('HarvestCloudMarketPlaceSellerBundle:Product:index.html.twig', array(
