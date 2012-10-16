@@ -122,20 +122,20 @@ form div.form.row
     margin: 1.5em 0;
 }
 
-form div.form.row label,
 form div.form.row span.input.holder
 {
     display: block;
 }
 
-form div.form.row label
+form div.form.row div label /* e.g. checkbox label */
 {
-    margin-bottom: 0.3em;
+  margin-right: 1em;
+  font-weight: normal;
 }
 
-form div.form.row label.checkbox
+form div.form.row h4
 {
-    display: inline;
+    margin-bottom: 0.3em;
 }
 
 form div.buttons.form.row
@@ -143,11 +143,12 @@ form div.buttons.form.row
     background: none;
 }
 
+select,
+input[type="number"],
 input[type="text"],
 input[type="email"],
 input[type="password"]
 {
-    width: 20em;
     max-width: 100%;
     padding: 1em;
 }

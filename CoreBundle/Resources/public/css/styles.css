@@ -114,7 +114,9 @@ form div.form.row label
     text-transform: uppercase;
 }
 
+select,
 input[type="text"],
+input[type="number"],
 input[type="email"],
 input[type="password"]
 {
