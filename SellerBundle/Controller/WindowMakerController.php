@@ -72,7 +72,7 @@ class WindowMakerController extends Controller
     public function newAction(Request $request)
     {
         $windowMaker = new WindowMaker();
-        $form = $this->createForm(new WindowMakerType(), $windowMaker);
+        $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
 
         if ($request->getMethod() == 'POST')
         {
