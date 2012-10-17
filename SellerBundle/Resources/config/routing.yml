@@ -13,6 +13,11 @@ Seller_hub_show:
         id: \d+
 
 
+Seller_register_landing:
+    pattern:  /register/landing
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Register:landing }
+
+
 Seller_order:
     pattern:  /orders
     defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:index }
