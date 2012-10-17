@@ -19,14 +19,16 @@
                 <div class="main_logo">
                     <strong><a href="{{ path('_welcome') }}"><img src="{{ asset('bundles/marketplacecore/images/header_logo.png') }}" alt="Harvest Cloud" title="Harvest Cloud" /></a></strong>
                 </div><!-- .main_logo -->
-                <div class="main nav">
-                    <a class="buy" href="{{ path('Buyer_homepage') }}">Buy</a>
-                    <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
-                    <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
-                    <a class="settings" href="{{ path('_welcome') }}" class="settings"><img src="{{ asset('bundles/marketplacecore/images/settings_icon.png') }}" alt="Settings" title="Settings" /></a>
-                    <span class="clear"></span>
-                </div><!--.main.nav -->
-            </div>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <div class="main nav">
+                        <a class="buy" href="{{ path('Buyer_homepage') }}">Buy</a>
+                        <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
+                        <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
+                        <a class="settings" href="{{ path('_welcome') }}" class="settings"><img src="{{ asset('bundles/marketplacecore/images/settings_icon.png') }}" alt="Settings" title="Settings" /></a>
+                        <span class="clear"></span>
+                    </div><!--.main.nav -->
+                {% endif %}
+            </div><!-- .logo_and_main_nav -->
             {% block subnav %}
             {% endblock %}
 
