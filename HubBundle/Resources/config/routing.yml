@@ -3,6 +3,11 @@ Hub_homepage:
     defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Default:index }
 
 
+Hub_register_landing:
+    pattern:  /register/landing
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:Register:landing }
+
+
 Hub_order:
     pattern:  /orders
     defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Order:index }

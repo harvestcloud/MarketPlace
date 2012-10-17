@@ -9,12 +9,17 @@
 
 namespace HarvestCloud\MarketPlace\HubBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Controller;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
+        if (!$this->getCurrentProfile()->hasActiveHubStatus())
+        {
+            return $this->redirect($this->generateUrl('Hub_register_landing'));
+        }
+
         return $this->render('HarvestCloudMarketPlaceHubBundle:Default:index.html.twig');
     }
 }

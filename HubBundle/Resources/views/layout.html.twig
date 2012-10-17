@@ -3,13 +3,15 @@
 {% block body_class %}hub{%endblock%}
 
 {% block subnav %}
-    <div id="subnav">
-        Hub:
-        |
-        <a href="{{ path('Hub_order') }}">Open orders</a>
-    </div><!-- #subnav -->
-{% endblock %}
+    {% if app.user.currentProfile.hasActiveHubStatus %}
+        <div id="subnav">
+            Hub:
+            |
+            <a href="{{ path('Hub_order') }}">Open orders</a>
+        </div><!-- #subnav -->
+    {% endif %}
+{% endblock %}{# subnav #}
 
 {% block content %}
     {% block hub_content %}{% endblock %}
-{% endblock %}
+{% endblock %}{# content #}
