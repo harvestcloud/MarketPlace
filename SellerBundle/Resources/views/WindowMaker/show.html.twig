@@ -28,5 +28,10 @@
             </table><!-- .nvp -->
         </div><!-- .left.column -->
         <div class="clear"></div>
+        <form action="{{ path('Seller_window_maker_edit', { 'id': windowMaker.id }) }}">
+            <div class="form row">
+                <input type="submit" class="submit button" value="Edit" />
+            </div><!-- .form.row -->
+        </form>
     </div><!-- .two_equal_columns -->
 {% endblock %}

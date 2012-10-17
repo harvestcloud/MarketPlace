@@ -94,4 +94,41 @@ class WindowMakerController extends Controller
           'form' => $form->createView(),
         ));
     }
+
+    /**
+     * edit
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-09
+     *
+     * @Route("/window-maker/{id}")
+     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:WindowMaker")
+     *
+     * @param  Request $request
+     */
+    public function editAction(WindowMaker $windowMaker, Request $request)
+    {
+        $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
+
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+
+            if ($form->isValid())
+            {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($windowMaker);
+                $em->flush();
+
+                return $this->redirect($this->generateUrl('Seller_window_maker_show', array(
+                    'id' => $windowMaker->getId(),
+                )));
+            }
+        }
+
+        return $this->render('HarvestCloudMarketPlaceSellerBundle:WindowMaker:edit.html.twig', array(
+          'form'        => $form->createView(),
+          'windowMaker' => $windowMaker,
+        ));
+    }
 }
