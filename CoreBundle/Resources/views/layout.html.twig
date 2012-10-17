@@ -13,17 +13,17 @@
         {% endblock %}
 
     </head>
-    <body>
+    <body class="{% block body_class %}{% endblock %}">
         <div id="page">
             <div class="logo_and_main_nav">
                 <div class="main_logo">
                     <strong><a href="{{ path('_welcome') }}"><img src="{{ asset('bundles/marketplacecore/images/header_logo.png') }}" alt="Harvest Cloud" title="Harvest Cloud" /></a></strong>
                 </div><!-- .main_logo -->
                 <div class="main nav">
-                    <a href="{{ path('Buyer_homepage') }}">Buy</a>
-                    <a href="{{ path('Seller_homepage') }}">Sell</a>
-                    <a href="{{ path('Hub_homepage') }}">Hub</a>
-                    <a href="{{ path('_welcome') }}" class="settings"><img src="{{ asset('bundles/marketplacecore/images/settings_icon.png') }}" alt="Settings" title="Settings" /></a>
+                    <a class="buy" href="{{ path('Buyer_homepage') }}">Buy</a>
+                    <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
+                    <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
+                    <a class="settings" href="{{ path('_welcome') }}" class="settings"><img src="{{ asset('bundles/marketplacecore/images/settings_icon.png') }}" alt="Settings" title="Settings" /></a>
                     <span class="clear"></span>
                 </div><!--.main.nav -->
             </div>

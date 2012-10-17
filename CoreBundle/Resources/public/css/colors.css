@@ -55,7 +55,18 @@ div.main.nav a
     color: #fff;
 }
 
-div.main.nav a:hover
+body.buy div.main.nav a.buy,
+body.sell div.main.nav a.sell,
+body.hub div.main.nav a.hub,
+body.settings div.main.nav a.settings
+{
+    background: rgba(149,135,112, 0.4);
+}
+
+body div.main.nav a.buy:hover,
+body div.main.nav a.sell:hover,
+body div.main.nav a.hub:hover,
+body div.main.nav a.settings:hover
 {
     background: rgba(149,135,112, 0.8);
 }
