@@ -10,6 +10,8 @@
 namespace HarvestCloud\MarketPlace\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Form;
 
 /**
  * CoreController
@@ -60,5 +62,34 @@ class CoreController extends Controller
     protected function getCurrentProfile()
     {
         return $this->getUser()->getCurrentProfile();
+    }
+
+    /**
+     * processForm()
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-16
+     *
+     * @param  Symfony\Component\HttpFoundation\Request $request
+     * @param  Symfony\Component\Form\Form              $form
+     * @param  string                                   $route_name
+     */
+    protected function processForm(Request $request, Form $form, $route_name)
+    {
+        if ($request->getMethod() == 'POST')
+        {
+            $form->bindRequest($request);
+
+            if ($form->isValid())
+            {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($form->getData());
+                $em->flush();
+
+                return $this->redirect($this->generateUrl($route_name, array(
+                    'id' => $form->getData()->getId(),
+                )));
+            }
+        }
     }
 }

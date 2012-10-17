@@ -15,6 +15,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use HarvestCloud\CoreBundle\Entity\WindowMaker;
 use HarvestCloud\CoreBundle\Form\WindowMakerType;
+use HarvestCloud\CoreBundle\Util\Debug;
+use Symfony\Component\Form\Form;
 
 /**
  * WindowMakerController
@@ -74,20 +76,9 @@ class WindowMakerController extends Controller
         $windowMaker = new WindowMaker();
         $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
 
-        if ($request->getMethod() == 'POST')
+        if ($response = $this->processForm($request, $form, 'Seller_window_maker_show'))
         {
-            $form->bindRequest($request);
-
-            if ($form->isValid())
-            {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($windowMaker);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('Seller_window_maker_show', array(
-                    'id' => $windowMaker->getId(),
-                )));
-            }
+            return $response;
         }
 
         return $this->render('HarvestCloudMarketPlaceSellerBundle:WindowMaker:new.html.twig', array(
@@ -110,20 +101,9 @@ class WindowMakerController extends Controller
     {
         $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
 
-        if ($request->getMethod() == 'POST')
+        if ($response = $this->processForm($request, $form, 'Seller_window_maker_show'))
         {
-            $form->bindRequest($request);
-
-            if ($form->isValid())
-            {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($windowMaker);
-                $em->flush();
-
-                return $this->redirect($this->generateUrl('Seller_window_maker_show', array(
-                    'id' => $windowMaker->getId(),
-                )));
-            }
+            return $response;
         }
 
         return $this->render('HarvestCloudMarketPlaceSellerBundle:WindowMaker:edit.html.twig', array(
