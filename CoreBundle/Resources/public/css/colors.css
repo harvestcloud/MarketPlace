@@ -28,6 +28,16 @@ table thead tr th
     background: rgba(0,0,0, 0.15);
 }
 
+table.nvp tr:nth-of-type(even) th
+{
+    background: rgba(0,0,0, 0.17);
+}
+
+table.nvp tr:nth-of-type(odd) th
+{
+    background: rgba(0,0,0, 0.13);
+}
+
 table tbody tr td
 {
     background: rgba(0,0,0, 0.1);
@@ -35,7 +45,7 @@ table tbody tr td
 
 table tbody tr:nth-of-type(odd) td
 {
-    background: rgba(0,0,0, 0.05);
+    background: rgba(0,0,0, 0.06);
 }
 
 

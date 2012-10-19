@@ -1,62 +1,49 @@
 {% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
 
 {% block buyer_content %}
-    <h1>Product #{{ product.id }}</h1>
-    <p>
-        <form action="{{ path('Buyer_cart_add_product', { 'product_id': product.id }) }}" method="post">
-            <input type="submit" value="Add to cart" />
-        </form>
-    </p>
-    <table class="nvp">
-        <tr>
-            <th>Name</th>
-            <td>{{ product.name }}</td>
-        </tr>
-        <tr>
-            <th>Category</th>
-            <td>{{ product.category }}</td>
-        </tr>
-        <tr>
-            <th>Location</th>
-            <td>{{ product.location.name }}</td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>${{ product.price }}</td>
-        </tr>
-        <tr>
-            <th>Initial <abbr title="quantity">qty</abbr></th>
-            <td>{{ product.initialQuantity }}</td>
-        </tr>
-        <tr>
-            <th><abbr title="Quantity">Qty</abbr> available</th>
-            <td>{{ product.quantityAvailable }}</td>
-        </tr>
-        <tr>
-            <th>Latitude</th>
-            <td>{{ product.latitude }}</td>
-        </tr>
-        <tr>
-            <th>Longitude</th>
-            <td>{{ product.longitude }}</td>
-        </tr>
-    </table><!-- .nvp -->
-
-    <h4>Stock Transactions</h4>
-    <table>
-        <thead>
-            <tr>
-                <th>Type</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for stockTransaction in product.stockTransactions %}
+    <h1>{{ product.name }}</h1>
+    <div class="two_equal_columns">
+        <div class="left column">
+            <table class="nvp">
                 <tr>
-                    <td>{{ stockTransaction.typeLabel }}</td>
-                    <td>{{ stockTransaction.quantity }}</td>
+                    <th>Name</th>
+                    <td>{{ product.name }}</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                <tr>
+                    <th>Category</th>
+                    <td>{{ product.category }}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>{{ product.location.name }}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>${{ product.price }}</td>
+                </tr>
+                <tr>
+                    <th>Initial <abbr title="quantity">qty</abbr></th>
+                    <td>{{ product.initialQuantity }}</td>
+                </tr>
+                <tr>
+                    <th><abbr title="Quantity">Qty</abbr> available</th>
+                    <td>{{ product.quantityAvailable }}</td>
+                </tr>
+                <tr>
+                    <th>Latitude</th>
+                    <td>{{ product.latitude }}</td>
+                </tr>
+                <tr>
+                    <th>Longitude</th>
+                    <td>{{ product.longitude }}</td>
+                </tr>
+            </table><!-- .nvp -->
+            <form action="{{ path('Buyer_cart_add_product', { 'product_id': product.id }) }}" method="post">
+                <div class="form row">
+                    <input type="submit"  class="submit button" value="Add to cart" />
+                </div><!-- .form.row -->
+            </form>
+        </div><!-- .left.column -->
+        <div class="clear"></div>
+    </div><!-- .two_equal_columns -->
 {% endblock %}
