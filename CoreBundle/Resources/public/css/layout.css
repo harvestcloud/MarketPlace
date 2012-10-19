@@ -23,6 +23,12 @@ body
     clear: both;
 }
 
+.show_sub_tablet_portrait,
+.show_sub_phone_portrait
+{
+  display: none;
+}
+
 /******************************************************************************
 
 table
@@ -196,7 +202,24 @@ footer
 @media
 only screen and (max-width: 820px)
 {
+    .show_sub_tablet_portrait
+    {
+      display: block;
+    }
+
+    span.show_sub_tablet_portrait
+    {
+      display: inline;
+    }
+
+    .hide_sub_tablet_portrait,
+    .sf-toolbarreset
+    {
+        display: none;
+    }
+
     /* Force table to not be like tables anymore */
+    /*
     table.standard,
     table.standard thead,
     table.standard tbody,
@@ -211,6 +234,7 @@ only screen and (max-width: 820px)
     {
       border: none;
     }
+    */
 
     div.map_canvas
     {
@@ -226,6 +250,7 @@ only screen and (max-width: 820px)
     }
 
     /* Hide table headers (but not display: none;, for accessibility) */
+    /*
     table.standard thead tr
     {
         position: absolute;
@@ -259,6 +284,7 @@ only screen and (max-width: 820px)
     {
         border: none;
     }
+    */
 }
 
 /*
@@ -267,6 +293,21 @@ only screen and (max-width: 820px)
 @media
 only screen and (max-width: 360px)
 {
+    .show_sub_phone_portrait
+    {
+        display: block;
+    }
+
+    span.show_sub_phone_portrait
+    {
+        display: inline;
+    }
+
+    .hide_sub_tablet_portrait
+    {
+        display: none;
+    }
+
     /******************************************************************************
 
     logo and main nav
