@@ -5,7 +5,6 @@
 {% block subnav %}
     {% if app.user.currentProfile.hasActiveSellerStatus %}
         <div id="subnav">
-            Sell:
             <a href="{{ path('Seller_product') }}">Products</a>
             |
             <a href="{{ path('Seller_seller_hub_pickup_window') }}">Pickup Windows</a>

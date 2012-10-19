@@ -4,11 +4,7 @@
 
 {% block subnav %}
     <div id="subnav">
-        Buy:
-        <a href="{{ path('Buyer_profile') }}">Profiles</a>
-        |
-        Current Profile:
-        <a href="{{ path('Buyer_profile_current') }}">{{ app.user.currentProfile.name }}</a>
+        <a href="{{ path('Buyer_homepage') }}">Products</a>
         |
         <a href="{{ path('Buyer_hub_nearby') }}">Nearby Hubs</a>
         |
