@@ -99,7 +99,7 @@ div.main.nav a
     display: block;
     padding: 2em 0;
     width: 8em;
-    max-width: 25%;
+    max-width: 20%;
     float: left;
     text-align: center;
     line-height: 100%;
@@ -322,6 +322,7 @@ only screen and (max-width: 360px)
         padding: 1em 0;
     }
 
+    div.main.nav a.cart,
     div.main.nav a.settings
     {
         padding: 0.6em 0 0.6em 0;
