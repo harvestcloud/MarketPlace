@@ -9,33 +9,25 @@
                     <th>Name</th>
                     <td>{{ product.name }}</td>
                 </tr>
-                <tr>
-                    <th>Category</th>
-                    <td>{{ product.category }}</td>
-                </tr>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <tr>
+                        <th>Seller</th>
+                        <td>{{ product.seller.name }}</td>
+                    </tr>
+                {% endif %}
                 <tr>
                     <th>Location</th>
-                    <td>{{ product.location.name }}</td>
+                    <td>{{ product.location.cityStateZip }}</td>
                 </tr>
-                <tr>
-                    <th>Price</th>
-                    <td>${{ product.price }}</td>
-                </tr>
-                <tr>
-                    <th>Initial <abbr title="quantity">qty</abbr></th>
-                    <td>{{ product.initialQuantity }}</td>
-                </tr>
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <tr>
+                        <th>Price</th>
+                        <td>${{ product.price }}</td>
+                    </tr>
+                {% endif %}
                 <tr>
                     <th><abbr title="Quantity">Qty</abbr> available</th>
                     <td>{{ product.quantityAvailable }}</td>
-                </tr>
-                <tr>
-                    <th>Latitude</th>
-                    <td>{{ product.latitude }}</td>
-                </tr>
-                <tr>
-                    <th>Longitude</th>
-                    <td>{{ product.longitude }}</td>
                 </tr>
             </table><!-- .nvp -->
             <form action="{{ path('Buyer_cart_add_product', { 'product_id': product.id }) }}" method="post">
