@@ -20,6 +20,11 @@ Buyer_hub_add:
         _method: POST
 
 
+Buyer_cart_show:
+    pattern:  /shopping-bag
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Cart:show }
+
+
 Buyer_order:
     pattern:  /orders
     defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:index }

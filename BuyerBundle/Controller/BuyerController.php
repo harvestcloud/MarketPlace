@@ -10,6 +10,7 @@
 namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 
 use HarvestCloud\MarketPlace\CoreBundle\Controller\CoreController as Controller;
+use HarvestCloud\CoreBundle\Entity\OrderCollection;
 
 /**
  * BuyerController
@@ -19,4 +20,21 @@ use HarvestCloud\MarketPlace\CoreBundle\Controller\CoreController as Controller;
  */
 class BuyerController extends Controller
 {
+    /**
+     * getCurrentCart()
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-20
+     *
+     * @return OrderCollection
+     */
+    public function getCurrentCart()
+    {
+        $session = $this->getRequest()->getSession();
+
+        $orderCollection = $this->getRepo('OrderCollection')
+            ->find($session->get('cart_id'));
+
+        return $orderCollection;
+    }
 }

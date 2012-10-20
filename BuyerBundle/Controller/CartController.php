@@ -24,6 +24,26 @@ use HarvestCloud\CoreBundle\Entity\OrderLineItem;
 class CartController extends Controller
 {
     /**
+     * show
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-20
+     */
+    public function showAction()
+    {
+        $orderCollection = $this->getCurrentCart();
+
+        if ($orderCollection)
+        {
+            return $this->render('HarvestCloudMarketPlaceBuyerBundle:Cart:show.html.twig', array(
+                'orderCollection'   => $orderCollection,
+            ));
+        }
+
+        return new Response('');
+    }
+
+    /**
      * Mini cart
      *
      * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
