@@ -5,20 +5,27 @@
     {% for order in orderCollection.orders %}
         <h3>{{ order.seller.name }}</h3>
         {% for sellerHubRef in order.seller.sellerHubRefsAsSeller %}
-            <h4>{{ sellerHubRef.hub.name }}</h4>
-            <ul>
-                {% for pickupWindow in sellerHubRef.pickupWindows %}
-                    <li>
-                        <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'hub_id': sellerHubRef.hub.id, 'start_time': pickupWindow.startTime|date('U')} ) }}">
-                          {{ pickupWindow.startTime|date('H:i') }}
-                          -
-                          {{ pickupWindow.endTime|date('H:i') }}
-                          {{ pickupWindow.startTime|date('D j F Y') }}
-                          <input type="submit" class="submit" value="Select" />
-                        </form>
-                    </li>
-                {% endfor %}
-            </ul>
+            <table class="standard">
+                <tbody>
+                    {% for pickupWindow in sellerHubRef.pickupWindows %}
+                        <tr>
+                            <td>{{ sellerHubRef.hub.name }}</td>
+                            <td>{{ pickupWindow.startTime|date('D') }}</td>
+                            <td>{{ pickupWindow.startTime|date('j F') }}</td>
+                            <td>
+                              {{ pickupWindow.startTime|date('H:i') }}
+                              -
+                              {{ pickupWindow.endTime|date('H:i') }}
+                            </td>
+                            <td>
+                                <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'hub_id': sellerHubRef.hub.id, 'start_time': pickupWindow.startTime|date('U')} ) }}">
+                                  <input type="submit" class="submit" value="Select" />
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tr>
+            </table>
         {% endfor %}
     {% endfor %}
 {% endblock %}
