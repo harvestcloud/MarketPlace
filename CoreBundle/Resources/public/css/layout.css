@@ -105,12 +105,15 @@ div.main.nav a
     line-height: 100%;
 }
 
+div.main.nav a.cart,
 div.main.nav a.settings
 {
     padding: 1.66666666em 0 1.5em 0;
     float: right;
+    width: 6em;
 }
 
+div.main.nav a.cart img,
 div.main.nav a.settings img
 {
     width: 20px;
