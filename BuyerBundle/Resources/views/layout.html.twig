@@ -13,12 +13,5 @@
 {% endblock %}
 
 {% block content %}
-    <div id="primaryContent">
-        {% block buyer_content %}{% endblock %}
-    </div><!-- #primaryContent -->
-    <div id="secondaryContent">
-        <h1>My Cart</h1>
-        {% render "HarvestCloudMarketPlaceBuyerBundle:Cart:mini" %}
-    </div><!-- #secondaryContent -->
-    <div class="clear"></div>
+    {% block buyer_content %}{% endblock %}
 {% endblock %}
