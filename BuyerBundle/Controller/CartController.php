@@ -67,6 +67,30 @@ class CartController extends Controller
     }
 
     /**
+     * sub_total
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-23
+     */
+    public function sub_totalAction()
+    {
+        $session = $this->getRequest()->getSession();
+
+        $orderCollection = $this->getCurrentCart();
+
+        if ($orderCollection)
+        {
+            $sub_total = $orderCollection->getSubTotal();
+        }
+        else
+        {
+            $sub_total = 0;
+        }
+
+        return new Response('$'.number_format($sub_total, 2));
+    }
+
+    /**
      * add Product to Cart
      *
      * @author Tom Haskins-Vaughan <tom@harvestcloud.com>

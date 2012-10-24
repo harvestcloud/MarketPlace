@@ -78,7 +78,10 @@ class CheckoutController extends Controller
      */
     public function pickup_windows_for_collectionAction()
     {
-        $orderCollection = $this->getOrderCollection();
+        $session = $this->getRequest()->getSession();
+
+        $orderCollection = $this->getRepo('OrderCollection')
+            ->findForSelectPickupWindow($session->get('cart_id'));
 
         return $this->render('HarvestCloudMarketPlaceBuyerBundle:Checkout:select_pickup_window.html.twig', array(
           'orderCollection' => $orderCollection,

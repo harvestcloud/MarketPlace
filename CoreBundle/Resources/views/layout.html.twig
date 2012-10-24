@@ -25,7 +25,7 @@
                         <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
                         <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
                         <a class="settings" href="{{ path('_welcome') }}" class="settings"><img src="{{ asset('bundles/marketplacecore/images/settings_icon.png') }}" alt="Settings" title="Settings" /></a>
-                        <a class="cart" href="{{ path('Buyer_cart_show') }}" class="cart"><span class="hide_sub_tablet_portrait">Cart: </span>$10.65</a>
+                        <a class="cart" href="{{ path('Buyer_cart_show') }}" class="cart"><span class="hide_sub_tablet_portrait">Cart: </span>{% render "HarvestCloudMarketPlaceBuyerBundle:Cart:sub_total" %}</a>
                         <span class="clear"></span>
                     </div><!--.main.nav -->
                 {% endif %}
