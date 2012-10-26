@@ -265,6 +265,11 @@ only screen and (max-width: 820px)
         width: 100%;
     }
 
+    div.two_equal_columns div.left.column
+    {
+        margin-bottom: 1em;
+    }
+
     /* Hide table headers (but not display: none;, for accessibility) */
     /*
     table.standard thead tr

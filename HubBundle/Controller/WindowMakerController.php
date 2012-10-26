@@ -13,6 +13,7 @@ use HarvestCloud\MarketPlace\HubBundle\Controller\HubController as Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
+use HarvestCloud\CoreBundle\Entity\WindowMaker;
 use HarvestCloud\CoreBundle\Entity\HubWindowMaker;
 use HarvestCloud\CoreBundle\Form\HubWindowMakerType;
 use HarvestCloud\CoreBundle\Util\Debug;
@@ -40,8 +41,12 @@ class WindowMakerController extends Controller
             ->findForHub($currentProfile)
         ;
 
+        $slots = $this->getRepo('HubWindowMaker')
+            ->getCalendarViewArray($currentProfile);
+
         return $this->render('HarvestCloudMarketPlaceHubBundle:WindowMaker:index.html.twig', array(
           'windowMakers' => $windowMakers,
+          'slots'        => $slots,
         ));
     }
 
