@@ -33,3 +33,41 @@ Hub_order_release:
         id: \d+
         _method: POST
 
+
+
+Hub_window_maker:
+    pattern:  /window-maker
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:index }
+    requirements:
+        _method: GET
+
+Hub_window_maker_create:
+    pattern:  /window-maker/new
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:new }
+    requirements:
+        _method: POST
+
+Hub_window_maker_new:
+    pattern:  /window-maker/new
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:new }
+    requirements:
+        _method: GET
+
+Hub_window_maker_update:
+    pattern:  /window-maker/{id}/edit
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:edit }
+    requirements:
+        _method: POST
+
+Hub_window_maker_edit:
+    pattern:  /window-maker/{id}/edit
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:edit }
+    requirements:
+        _method: GET
+
+Hub_window_maker_show:
+    pattern:  /window-maker/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:show }
+    requirements:
+        id: \d+
+        _method: GET

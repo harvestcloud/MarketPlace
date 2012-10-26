@@ -1,7 +1,7 @@
 {% extends 'HarvestCloudMarketPlaceSellerBundle::layout.html.twig' %}
 {% form_theme form 'HarvestCloudMarketPlaceCoreBundle:Form:fields.html.twig' %}
 
-{% block seller_content %}
+{% block content %}
     <h1>New Window Maker</h1>
     <form action="{{ path('Seller_window_maker_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}

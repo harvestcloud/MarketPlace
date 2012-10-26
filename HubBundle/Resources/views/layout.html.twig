@@ -6,6 +6,8 @@
     {% if app.user.currentProfile.hasActiveHubStatus %}
         <div id="subnav">
             <a href="{{ path('Hub_order') }}">Open orders</a>
+            |
+            <a href="{{ path('Hub_window_maker') }}">Window Makers</a>
         </div><!-- #subnav -->
     {% endif %}
 {% endblock %}{# subnav #}
