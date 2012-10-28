@@ -71,3 +71,10 @@ Hub_window_maker_show:
     requirements:
         id: \d+
         _method: GET
+
+Hub_window_maker_make:
+    pattern:  /window-maker/{id}/make
+    defaults: { _controller: HarvestCloudMarketPlaceHubBundle:WindowMaker:make }
+    requirements:
+        id: \d+
+        _method: POST

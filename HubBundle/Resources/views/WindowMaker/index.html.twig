@@ -10,6 +10,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Pickup/Delivery</th>
                         <th>Days of Week</th>
                         <th>Start Time</th>
                         <th>End Time</th>
@@ -19,6 +20,7 @@
                     {% for windowMaker in windowMakers %}
                         <tr>
                           <td><a href="{{ path('Hub_window_maker_show', { 'id': windowMaker.id }) }}">{{ windowMaker.id }}</a></td>
+                          <td>{{ windowMaker.deliveryType }}</td>
                           <td>{{ windowMaker.daysOfWeekAsString }}</td>
                           <td>{{ windowMaker.startTime }}</td>
                           <td>{{ windowMaker.endTime }}</td>

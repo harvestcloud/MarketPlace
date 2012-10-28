@@ -117,4 +117,28 @@ class WindowMakerController extends Controller
           'windowMaker' => $windowMaker,
         ));
     }
+
+    /**
+     * make
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-10-27
+     *
+     * @Route("/window-maker/{id}/make")
+     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:HubWindowMaker")
+     *
+     * @param  HubWindowMaker  $windowMaker
+     */
+    public function makeAction($windowMaker)
+    {
+        $windows = $windowMaker->makeWindows();
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($windowMaker);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('Hub_window_maker_show', array(
+            'id' => $windowMaker->getId(),
+        )));
+    }
 }
