@@ -145,3 +145,10 @@ Seller_window_maker_show:
     requirements:
         id: \d+
         _method: GET
+
+Seller_window_maker_make:
+    pattern:  /window-maker/{id}/make
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:WindowMaker:make }
+    requirements:
+        id: \d+
+        _method: POST
