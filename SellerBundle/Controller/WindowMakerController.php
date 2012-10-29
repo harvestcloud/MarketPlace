@@ -13,8 +13,8 @@ use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Control
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
-use HarvestCloud\CoreBundle\Entity\WindowMaker;
-use HarvestCloud\CoreBundle\Form\WindowMakerType;
+use HarvestCloud\CoreBundle\Entity\SellerWindowMaker;
+use HarvestCloud\CoreBundle\Form\SellerWindowMakerType;
 use HarvestCloud\CoreBundle\Util\Debug;
 use Symfony\Component\Form\Form;
 
@@ -36,7 +36,7 @@ class WindowMakerController extends Controller
     {
         $currentProfile = $this->getCurrentProfile();
 
-        $windowMakers = $this->getRepo('WindowMaker')
+        $windowMakers = $this->getRepo('SellerWindowMaker')
             ->findForSeller($currentProfile)
         ;
 
@@ -52,11 +52,11 @@ class WindowMakerController extends Controller
      * @since  2012-10-09
      *
      * @Route("/window-maker/{id}")
-     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:WindowMaker")
+     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:SellerWindowMaker")
      *
-     * @param  WindowMaker  $windowMaker
+     * @param  SellerWindowMaker  $windowMaker
      */
-    public function showAction($windowMaker)
+    public function showAction(SellerWindowMaker $windowMaker)
     {
         return $this->render('HarvestCloudMarketPlaceSellerBundle:WindowMaker:show.html.twig', array(
           'windowMaker' => $windowMaker,
@@ -73,8 +73,8 @@ class WindowMakerController extends Controller
      */
     public function newAction(Request $request)
     {
-        $windowMaker = new WindowMaker();
-        $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
+        $windowMaker = new SellerWindowMaker();
+        $form = $this->createForm(new SellerWindowMakerType($this->getCurrentProfile()), $windowMaker);
 
         if ($response = $this->processForm($request, $form, 'Seller_window_maker_show'))
         {
@@ -93,13 +93,13 @@ class WindowMakerController extends Controller
      * @since  2012-10-09
      *
      * @Route("/window-maker/{id}")
-     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:WindowMaker")
+     * @ParamConverter("windowMaker", class="HarvestCloudCoreBundle:SellerWindowMaker")
      *
      * @param  Request $request
      */
-    public function editAction(WindowMaker $windowMaker, Request $request)
+    public function editAction(SellerWindowMaker $windowMaker, Request $request)
     {
-        $form = $this->createForm(new WindowMakerType($this->getCurrentProfile()), $windowMaker);
+        $form = $this->createForm(new SellerWindowMakerType($this->getCurrentProfile()), $windowMaker);
 
         if ($response = $this->processForm($request, $form, 'Seller_window_maker_show'))
         {
