@@ -13,15 +13,15 @@ use HarvestCloud\MarketPlace\SellerBundle\Controller\SellerController as Control
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
-use HarvestCloud\CoreBundle\Entity\SellerHubPickupWindow;
+use HarvestCloud\CoreBundle\Entity\SellerWindow;
 
 /**
- * SellerHubPickupWindowController
+ * SellerWindowController
  *
  * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
  * @since  2012-10-10
  */
-class SellerHubPickupWindowController extends Controller
+class SellerWindowController extends Controller
 {
     /**
      * index
@@ -31,11 +31,11 @@ class SellerHubPickupWindowController extends Controller
      */
     public function indexAction()
     {
-        $windows = $this->getRepo('SellerHubPickupWindow')
+        $windows = $this->getRepo('SellerWindow')
             ->findUpcomingForSeller($this->getCurrentProfile())
         ;
 
-        return $this->render('HarvestCloudMarketPlaceSellerBundle:SellerHubPickupWindow:index.html.twig', array(
+        return $this->render('HarvestCloudMarketPlaceSellerBundle:SellerWindow:index.html.twig', array(
           'windows' => $windows,
         ));
     }

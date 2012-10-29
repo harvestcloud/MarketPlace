@@ -89,22 +89,22 @@ Seller_product_create:
         _method: POST
 
 
-Seller_seller_hub_pickup_window:
-    pattern:  /pickup-window
-    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubPickupWindow:index }
+Seller_seller_window:
+    pattern:  /seller-window
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerWindow:index }
     requirements:
         _method: GET
 
 
-Seller_hub_pickup_window_new:
-    pattern:  /hubs/{id}/pickup-window/new
-    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_pickup_window }
+Seller_seller_window_new:
+    pattern:  /hubs/{id}/seller-window/new
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_seller_window }
     requirements:
         _method: GET
 
-Seller_hub_pickup_window_create:
-    pattern:  /hubs/{id}/new-pickup-window
-    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_pickup_window }
+Seller_seller_window_create:
+    pattern:  /hubs/{id}/new-seller-window
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:SellerHubRef:add_seller_window }
     requirements:
         _method: POST
 
