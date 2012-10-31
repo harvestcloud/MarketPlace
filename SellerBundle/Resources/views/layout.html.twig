@@ -2,22 +2,6 @@
 
 {% block body_class %}sell{%endblock%}
 
-{% block subnav %}
-    {% if app.user.currentProfile.hasActiveSellerStatus %}
-        <div id="subnav">
-            <a href="{{ path('Seller_product') }}">Products</a>
-            |
-            <a href="{{ path('Seller_seller_window') }}">Seller Windows</a>
-            |
-            <a href="{{ path('Seller_window_maker') }}">Recurring Seller Windows</a>
-            |
-            <a href="{{ path('Seller_hub_nearby') }}">Nearby Hubs</a>
-            |
-            <a href="{{ path('Seller_order') }}">Orders</a>
-        </div><!-- #subnav -->
-    {% endif %}
-{% endblock %}{# subnav #}
-
 {% block content %}
     {% block seller_content %}{% endblock %}
 {% endblock %}

@@ -2,16 +2,6 @@
 
 {% block body_class %}buy{%endblock%}
 
-{% block subnav %}
-    <div id="subnav">
-        <a href="{{ path('Buyer_homepage') }}">Products</a>
-        |
-        <a href="{{ path('Buyer_hub_nearby') }}">Nearby Hubs</a>
-        |
-        <a href="{{ path('Buyer_order') }}">Orders</a>
-    </div><!-- #subnav -->
-{% endblock %}
-
 {% block content %}
     {% block buyer_content %}{% endblock %}
 {% endblock %}
