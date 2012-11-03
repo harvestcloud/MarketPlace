@@ -324,8 +324,8 @@ only screen and (max-width: 360px)
     #subnav,
     #footer
     {
-      margin-left: 0.5em;
-      margin-right: 0.5em;
+      margin-left: 1em;
+      margin-right: 1em;
     }
 
     .show_sub_phone_portrait

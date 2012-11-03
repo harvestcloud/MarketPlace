@@ -1,35 +1,26 @@
 {% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
 
 {% block content %}
-    <h3>Products nearby</h3>
-    <table class="standard">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th class="hide_sub_tablet_portrait">Category</th>
-                <th>Seller</th>
-                <th class="hide_sub_tablet_portrait">Location</th>
-                <th>Price</th>
-                <th><abbr title="Quantity">Qty</abbr><span class="hide_sub_tablet_portrait"> available</span></th>
-                <th class="hide_sub_tablet_portrait">Distance</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>Products nearby</h1>
+
+    <div class="tile container">
+        {% for i in 1..10 %}
             {% for product in products %}
-                <tr>
-                  <td><a href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">{{ product.0.name }}</a></td>
-                  <td class="hide_sub_tablet_portrait">{{ product.0.category }}</td>
-                  <td>
-                    <div><a href="{{ path('Buyer_seller_show', { 'id': product.0.seller.id }) }}">{{ product.0.seller.name }}</a></div>
-                    <div class="show_sub_tablet_portrait">{{ product.0.location.town }}, {{ product.0.location.stateCode }}</div>
-                    </td>
-                  <td class="hide_sub_tablet_portrait">{{ product.0.location.town }}, {{ product.0.location.stateCode }}</td>
-                  <td>${{ product.0.price }}</td>
-                  <td>{{ product.0.quantityAvailable }}</td>
-                  <td class="hide_sub_tablet_portrait">{{ product.distance|number_format(1) }} miles</td>
-                </tr>
+                <a class="product tile" href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
+                    <h3>{{ product.0.name }}</h3>
+                    <div class="profile_picture"><img src="/images/sandbox/hen.jpg" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
+                    <h4 class="seller">{{ product.0.seller.name }}</h4>
+                    <div class="location_and_distance">
+                        <span class="location">{{ product.0.location.cityState }}</span>
+                        <span class="distance">{{ product.distance|number_format(1) }} miles</span>
+                    </div><!-- .location_and_distance -->
+                    <div class="price_and_quantity">
+                        <strong class="price">${{ product.0.price }}</strong>
+                        <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
+                    </div>
+                </a><!-- .product.tile -->
             {% endfor %}
-        </tbody>
-    </table><!-- .standard -->
-    <div class="clear"></div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div><!-- .tile_container.container -->
 {% endblock %}
