@@ -35,7 +35,7 @@ class DefaultController extends Controller
         $filter = new ProductFilter();
         $filter->setLatitude($currentProfile->getDefaultLocation()->getLatitude());
         $filter->setLongitude($currentProfile->getDefaultLocation()->getLongitude());
-        $filter->setRange(50);
+        $filter->setRange(100);
 
         $products = $this->getRepo('Product')
             ->findForSearchFilter($filter)
