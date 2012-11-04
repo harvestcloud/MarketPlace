@@ -12,7 +12,11 @@ namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 use HarvestCloud\MarketPlace\BuyerBundle\Controller\BuyerController as Controller;
 use HarvestCloud\PayPalBundle\Util\PaymentGateway;
 use HarvestCloud\PayPalBundle\Entity\PayPalPaymentCollection;
+use HarvestCloud\CoreBundle\Util\Debug;
 use HarvestCloud\CoreBundle\Entity\OrderCollection;
+use HarvestCloud\CoreBundle\Entity\HubWindow;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * CheckoutController
@@ -31,9 +35,14 @@ class CheckoutController extends Controller
      * @since  2012-05-18
      * @todo   Deal better with caught exception
      *
+     * @Route("/checkout/select-window/{id}")
+     * @ParamConverter("hubWindow", class="HarvestCloudCoreBundle:HubWindow")
+     *
+     * @param  HubWindow
+     *
      * @return Response A Response instance
      */
-    public function select_pickup_window_for_collectionAction($hub_id, $start_time)
+    public function select_pickup_window_for_collectionAction(HubWindow $hubWindow)
     {
         $orderCollection = $this->getOrderCollection();
 
@@ -41,21 +50,8 @@ class CheckoutController extends Controller
 
         try
         {
-            foreach ($orderCollection->getOrders() as $order)
-            {
-                // Find SellerHubPickupWindow
-                $pickupWindow = $this->getRepo('SellerHubPickupWindow')
-                    ->findOneForHubIdAndStartTime($hub_id, $start_time);
-
-                if (null === $pickupWindow)
-                {
-                    throw new \Exception('No pickup window found');
-                }
-
-                $order->setPickupWindow($pickupWindow);
-                $em->persist($order);
-            }
-
+            $orderCollection->setHubWindow($hubWindow);
+            $em->persist($orderCollection);
             $em->flush();
         }
         catch (\Exception $e)
@@ -78,13 +74,14 @@ class CheckoutController extends Controller
      */
     public function pickup_windows_for_collectionAction()
     {
-        $session = $this->getRequest()->getSession();
+        $orderCollection = $this->getCurrentCart();
 
-        $orderCollection = $this->getRepo('OrderCollection')
-            ->findForSelectPickupWindow($session->get('cart_id'));
+        $hubWindows = $this->getRepo('HubWindow')
+            ->findForSelectWindowForOrderCollection($orderCollection);
 
         return $this->render('HarvestCloudMarketPlaceBuyerBundle:Checkout:select_pickup_window.html.twig', array(
           'orderCollection' => $orderCollection,
+          'hubWindows'      => $hubWindows,
         ));
     }
 

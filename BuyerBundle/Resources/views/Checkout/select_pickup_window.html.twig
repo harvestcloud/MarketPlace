@@ -2,30 +2,23 @@
 
 {% block buyer_content %}
     <h1>Select Delivery/Pickup</h1>
-    {% for order in orderCollection.orders %}
-        <h3>{{ order.seller.name }}</h3>
-        {% for sellerHubRef in order.seller.sellerHubRefsAsSeller %}
-            <table class="standard">
-                <tbody>
-                    {% for pickupWindow in sellerHubRef.pickupWindows %}
-                        <tr>
-                            <td>{{ sellerHubRef.hub.name }}</td>
-                            <td>{{ pickupWindow.startTime|date('D') }}</td>
-                            <td>{{ pickupWindow.startTime|date('j F') }}</td>
-                            <td>
-                              {{ pickupWindow.startTime|date('H:i') }}
-                              -
-                              {{ pickupWindow.endTime|date('H:i') }}
-                            </td>
-                            <td>
-                                <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'hub_id': sellerHubRef.hub.id, 'start_time': pickupWindow.startTime|date('U')} ) }}">
-                                  <input type="submit" class="submit" value="Select" />
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tr>
-            </table>
+    <table class="standard">
+        {% for hubWindow in hubWindows %}
+            <tr>
+                <td>{{ hubWindow.hub.name }}</td>
+                <td>{{ hubWindow.startTime|date('D') }}</td>
+                <td>{{ hubWindow.startTime|date('j F') }}</td>
+                <td>
+                  {{ hubWindow.startTime|date('H:i') }}
+                  -
+                  {{ hubWindow.endTime|date('H:i') }}
+                </td>
+                <td>
+                    <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'id': hubWindow.id }) }}">
+                      <input type="submit" class="submit" value="Select" />
+                    </form>
+                </td>
+            </tr>
         {% endfor %}
-    {% endfor %}
+    </table><!-- .standard -->
 {% endblock %}

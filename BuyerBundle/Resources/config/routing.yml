@@ -68,7 +68,7 @@ Buyer_cart_add_product:
 
 
 Buyer_checkout_select_pickup_windows_for_collection:
-    pattern:  /checkout/select-pickup-window/{hub_id}/{start_time}
+    pattern:  /checkout/select-window/{id}
     defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Checkout:select_pickup_window_for_collection }
     requirements:
         _method: POST
