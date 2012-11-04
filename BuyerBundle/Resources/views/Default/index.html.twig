@@ -4,22 +4,20 @@
     <h1>Products nearby</h1>
 
     <div class="tile container">
-        {% for i in 1..10 %}
-            {% for product in products %}
-                <a class="product tile" href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
-                    <h3>{{ product.0.name }}</h3>
-                    <div class="profile_picture"><img src="/images/sandbox/hen.jpg" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
-                    <h4 class="seller">{{ product.0.seller.name }}</h4>
-                    <div class="location_and_distance">
-                        <span class="location">{{ product.0.location.cityState }}</span>
-                        <span class="distance">{{ product.distance|number_format(1) }} miles</span>
-                    </div><!-- .location_and_distance -->
-                    <div class="price_and_quantity">
-                        <strong class="price">${{ product.0.price }}</strong>
-                        <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
-                    </div>
-                </a><!-- .product.tile -->
-            {% endfor %}
+        {% for product in products %}
+            <a class="product tile" href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
+                <h3>{{ product.0.name }}</h3>
+                <div class="profile_picture"><img src="/images/sandbox/hen.jpg" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
+                <h4 class="seller">{{ product.0.seller.name }}</h4>
+                <div class="location_and_distance">
+                    <span class="location">{{ product.0.location.cityState }}</span>
+                    <span class="distance">{{ product.distance|number_format(1) }} miles</span>
+                </div><!-- .location_and_distance -->
+                <div class="price_and_quantity">
+                    <strong class="price">${{ product.0.price }}</strong>
+                    <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
+                </div>
+            </a><!-- .product.tile -->
         {% endfor %}
         <div class="clear"></div>
     </div><!-- .tile_container.container -->
