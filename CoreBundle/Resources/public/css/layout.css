@@ -212,6 +212,52 @@ footer
     margin-top: 5em;
 }
 
+#footer ul#mainNav
+{
+    margin: 0;
+    padding: 0;
+}
+
+#footer ul#mainNav li,
+#footer ul#mainNav li ul
+{
+    list-style: none;
+    margin: 2em 0;
+    padding: 0;
+}
+
+#footer #mainNav > li a
+{
+    color: inherit;
+}
+
+#footer #mainNav li ul li a
+{
+    text-transform: uppercase;
+    color: inherit;
+    font-weight: normal;
+}
+
+#footer ul#mainNav li h3,
+#footer ul#mainNav li ul
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#footer ul#mainNav > li
+{
+    float: left;
+    width: 19%;
+    margin-top: 0;
+    margin-right: 1.25%;
+}
+
+#footer ul#mainNav > li:nth-of-type(5n+0)
+{
+    margin-right: 0;
+}
+
 /*
 * Tablets portrait
 */
@@ -394,5 +440,15 @@ only screen and (max-width: 360px)
     div.main.nav a.settings
     {
         padding: 1.22em 0 1.02em 0;
+    }
+
+    #footer ul#mainNav > li
+    {
+        float: none;
+    }
+
+    #footer ul#mainNav > li ul li
+    {
+        margin-left: 2em;
     }
 }
