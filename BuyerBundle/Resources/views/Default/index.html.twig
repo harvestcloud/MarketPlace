@@ -7,7 +7,7 @@
         {% for product in products %}
             <a class="product tile" href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
                 <h3>{{ product.0.name }}</h3>
-                <div class="profile_picture"><img src="/images/sandbox/hen.jpg" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
+                <div class="profile_picture"><img src="/images/sandbox/avatars/{{ product.0.seller.avatarName }}.png" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
                 <h4 class="seller">{{ product.0.seller.name }}</h4>
                 <div class="location_and_distance">
                     <span class="location">{{ product.0.location.cityState }}</span>

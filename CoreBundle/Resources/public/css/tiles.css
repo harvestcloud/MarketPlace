@@ -49,12 +49,12 @@ div.tile.container .product.tile div
 
 div.tile.container .product.tile .profile_picture
 {
-    margin: 0.75em;
+    margin: -1em 0 -0.25em 0;
 }
 
 div.tile.container .product.tile .profile_picture img
 {
-    max-width: 25%;
+    max-width: 30%;
     border-radius: 3px;
 }
 
