@@ -21,13 +21,8 @@
                     </form>
                 </p>
             {% else %}
-                {% if sellerHubRef.pickupWindows %}
+                {% if sellerHubRef.sellerWindows %}
                     <h2>Pickup Windows</h2>
-                    <p>
-                        <form method="get" action="{{ path('Seller_hub_pickup_window_new', { 'id': hub.id }) }}">
-                            <input type="submit" class="submit" value="Add Pickup Window" />
-                        </form>
-                    </p>
                     <table class="standard">
                         <thead>
                             <tr>
@@ -36,10 +31,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for pickupWindow in sellerHubRef.pickupWindows %}
+                            {% for window in sellerHubRef.sellerWindows %}
                                 <tr>
-                                  <td>{{ pickupWindow.startTime|date('Y-m-d H:i:s') }}</td>
-                                  <td>{{ pickupWindow.endTime|date('Y-m-d H:i:s') }}</td>
+                                  <td>{{ window.startTime|date('Y-m-d H:i:s') }}</td>
+                                  <td>{{ window.endTime|date('Y-m-d H:i:s') }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
