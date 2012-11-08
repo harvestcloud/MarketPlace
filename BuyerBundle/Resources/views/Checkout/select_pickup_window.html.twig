@@ -13,6 +13,7 @@
                   -
                   {{ hubWindow.endTime|date('H:i') }}
                 </td>
+                <td>${{ hubWindow.totalFeeForOrderCollection|number_format(2) }}</td>
                 <td>
                     <form method="post" action="{{ path('Buyer_checkout_select_pickup_windows_for_collection', { 'id': hubWindow.id }) }}">
                       <input type="submit" class="submit" value="Select" />
