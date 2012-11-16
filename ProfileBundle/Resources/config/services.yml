@@ -1,0 +1,7 @@
+parameters:
+#    harvest_cloud_market_place_profile.example.class: HarvestCloud\MarketPlace\ProfileBundle\Example
+
+services:
+#    harvest_cloud_market_place_profile.example:
+#        class: %harvest_cloud_market_place_profile.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
