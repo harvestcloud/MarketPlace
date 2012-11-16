@@ -11,10 +11,20 @@ namespace HarvestCloud\MarketPlace\ProfileBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-
+/**
+ * DefaultController
+ *
+ * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+ * @since  2012-11-15
+ */
 class DefaultController extends Controller
 {
-    
+    /**
+     * index
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-11-15
+     */
     public function indexAction($name)
     {
         return $this->render('HarvestCloudMarketPlaceProfileBundle:Default:index.html.twig', array('name' => $name));
