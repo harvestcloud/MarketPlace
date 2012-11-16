@@ -9,7 +9,7 @@
 
 namespace HarvestCloud\MarketPlace\ProfileBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HarvestCloud\MarketPlace\ProfileBundle\Controller\ProfileController as Controller;
 
 /**
  * DefaultController
