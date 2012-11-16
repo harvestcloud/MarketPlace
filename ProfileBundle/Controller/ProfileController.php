@@ -19,6 +19,6 @@ use HarvestCloud\MarketPlace\CoreBundle\Controller\CoreController as Controller;
  * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
  * @since  2012-11-15
  */
-class ProfileBundle extends Controller
+class ProfileController extends Controller
 {
 }
