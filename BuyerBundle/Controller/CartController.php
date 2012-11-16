@@ -144,6 +144,9 @@ class CartController extends Controller
         // Update price
         $lineItem->setPrice($product->getPrice());
 
+        // Update order sub_total and total
+        $order->updateTotals();
+
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($orderCollection);
         $em->persist($order);
