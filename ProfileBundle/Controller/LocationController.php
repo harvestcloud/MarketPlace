@@ -28,7 +28,7 @@ class LocationController extends Controller
     public function indexAction()
     {
         return $this->render('HarvestCloudMarketPlaceProfileBundle:Location:index.html.twig', array(
-            'locations' => array(),
+            'locations' => $this->getCurrentProfile()->getLocations(),
         ));
     }
 }
