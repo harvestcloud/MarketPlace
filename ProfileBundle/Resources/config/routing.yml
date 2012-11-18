@@ -1,7 +1,40 @@
+Profile_homepage:
+    pattern:  /
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Default:index }
+
+
+
+
 Profile_location:
     pattern:  /location
     defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:index }
 
-Profile_homepage:
-    pattern:  /
-    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Default:index }
+Profile_location_show:
+    pattern:  /location/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:show }
+    requirements:
+        id: \d+
+
+Profile_location_create:
+    pattern:  /location/new
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:new }
+    requirements:
+        _method: POST
+
+Profile_location_new:
+    pattern:  /location/new
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:new }
+    requirements:
+        _method: GET
+
+Profile_location_update:
+    pattern:  /location/{id}/edit
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:edit }
+    requirements:
+        _method: POST
+
+Profile_location_edit:
+    pattern:  /location/{id}/edit
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:edit }
+    requirements:
+        _method: GET

@@ -6,8 +6,7 @@
         <tbody>
             {% for location in locations %}
                 <tr>
-                    <td>{{ location.id }}</td>
-                    <td>{{ location.name }}</td>
+                    <td><a href="{{ path('Profile_location_show', { 'id' : location.id }) }}">{{ location.name }}</a></td>
                     <td>
                       {{ location.addressLine1 }}
                       {{ location.addressLine2 }}
