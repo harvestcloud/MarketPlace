@@ -1,1 +1,26 @@
-Hello {{ name }}!
+{% extends 'HarvestCloudMarketPlaceProfileBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>{{ profile }}</h1>
+
+    <div class="two_equal_columns">
+        <div class="left column">
+            <table class="nvp">
+                <tr>
+                    <th>Name</th>
+                    <td>{{ profile.name }}</td>
+                </tr>
+                <tr>
+                    <th>PayPal Account</th>
+                    <td>{{ profile.payPalAccount }}</td>
+                </tr>
+            </table><!-- .nvp -->
+        </div><!-- .left.column -->
+        <div class="clear"></div>
+        <form action="{{ path('Profile_edit') }}">
+            <div class="form row">
+                <input type="submit" class="submit button" value="Edit" />
+            </div><!-- .form.row -->
+        </form>
+    </div><!-- .two_equal_columns -->
+{% endblock %}

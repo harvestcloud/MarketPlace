@@ -5,6 +5,21 @@ Profile_homepage:
 
 
 
+Profile_update:
+    pattern:  /edit
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Default:edit }
+    requirements:
+        _method: POST
+
+Profile_edit:
+    pattern:  /edit
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Default:edit }
+    requirements:
+        _method: GET
+
+
+
+
 Profile_location:
     pattern:  /location
     defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Location:index }
