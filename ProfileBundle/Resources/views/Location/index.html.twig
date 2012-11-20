@@ -19,4 +19,9 @@
             {% endfor %}
         </tbody>
     </table>
+    <form action="{{ path('Profile_location_new') }}">
+        <div class="form row">
+            <input type="submit" class="submit button" value="New" />
+        </div><!-- .form.row -->
+    </form>
 {% endblock %}
