@@ -32,11 +32,7 @@ body
     margin: 0;
     padding: 0;
     color: #958770;
-}
-
-body, #contentWrapper
-{
-    background: #fff3e0 url(/bundles/marketplacecore/images/bg_body.png) scroll repeat center top;
+    background: #ddd2c3;
 }
 
 a
@@ -74,7 +70,6 @@ main containers
 
 #page
 {
-    background: rgba(0,0,0, 0.1);
 }
 
 #header,
@@ -93,11 +88,13 @@ main containers
 
 #contentWrapper
 {
+    background: #fff3e0 url(/bundles/marketplacecore/images/bg_body.png) scroll repeat center top;
 }
 
 #content
 {
-    padding: 2em 0;
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 /******************************************************************************
