@@ -11,12 +11,6 @@ a
     font-weight: bold;
 }
 
-body
-{
-    background: #fff3e0 url(/bundles/marketplacecore/images/bg_body.png) scroll repeat center top;
-    color: #958770;
-}
-
 /******************************************************************************
 
 table
@@ -57,7 +51,6 @@ logo and main nav
 
 div.main.nav
 {
-    background: rgba(149,135,112, 0.7);
 }
 
 div.main.nav a
