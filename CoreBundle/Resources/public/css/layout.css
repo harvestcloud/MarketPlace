@@ -49,55 +49,6 @@ table.nvp tr td
 
 /******************************************************************************
 
-logo and main nav
-
-******************************************************************************/
-
-div.main.nav
-{
-}
-
-div.main.nav a
-{
-    display: block;
-    padding: 2em 0;
-    width: 8em;
-    max-width: 20%;
-    float: left;
-    text-align: center;
-    line-height: 100%;
-}
-
-div.main.nav a.cart,
-div.main.nav a.settings
-{
-    float: right;
-}
-
-div.main.nav a.cart
-{
-    width: 10em;
-    max-width: 25%;
-}
-
-div.main.nav a.settings
-{
-    max-width: 15%;
-}
-
-div.main.nav a.settings
-{
-    padding: 1.66666666em 0 1.5em 0;
-}
-
-div.main.nav a.settings img
-{
-    width: 20px;
-    height: 20px;
-}
-
-/******************************************************************************
-
 forms
 
 ******************************************************************************/

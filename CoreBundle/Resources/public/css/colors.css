@@ -49,15 +49,6 @@ logo and main nav
 
 ******************************************************************************/
 
-div.main.nav
-{
-}
-
-div.main.nav a
-{
-    color: #fff;
-}
-
 body.buy div.main.nav a.buy,
 body.sell div.main.nav a.sell,
 body.hub div.main.nav a.hub,

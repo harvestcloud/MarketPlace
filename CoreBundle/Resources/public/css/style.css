@@ -102,6 +102,110 @@ main containers
 
 /******************************************************************************
 
+header
+
+******************************************************************************/
+
+#header
+{
+  padding-top: 3em;
+}
+
+#header div.main_logo
+{
+    width: 45em;
+    float: left;
+}
+
+#header div.main.nav
+{
+    text-transform: uppercase;
+}
+
+#header div.main.nav a
+{
+    margin-right: 0.5em;
+    display: block;
+    padding: 1.2em 0;
+    width: 8em;
+    max-width: 20%;
+    float: left;
+    text-align: center;
+    line-height: 100%;
+    font-size: 120%;
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(0,0,0, 0.4);
+    color: #fff;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#header div.main.nav a:first-of-type
+{
+}
+
+#header div.main.nav a.settings
+{
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    max-width: 15%;
+    padding: 0.66666666em 0 0.5em 0;
+}
+
+body.buy #header div.main.nav a.buy,
+body.sell #header div.main.nav a.sell,
+body.hub #header div.main.nav a.hub,
+body.settings #header div.main.nav a.settings,
+body.settings #header div.main.nav a.cart
+{
+    background: rgba(149,135,112, 0.4);
+}
+
+body #header div.main.nav a.buy:hover,
+body #header div.main.nav a.sell:hover,
+body #header div.main.nav a.hub:hover,
+body #header div.main.nav a.settings:hover,
+body #header div.main.nav a.cart:hover
+{
+    background: rgba(149,135,112, 0.8);
+}
+
+#header div.main_logo img
+{
+    max-width: 60%;
+}
+
+#header div.main.nav a.cart,
+#header div.main.nav a.settings
+{
+    float: right;
+}
+
+#header div.main.nav a.cart
+{
+    width: 10em;
+    max-width: 25%;
+    margin-right: 0;
+}
+
+#header div.main.nav a.settings img
+{
+    width: 10px;
+    height: 10px;
+}
+
+
+
+/******************************************************************************
+
 footer
 
 ******************************************************************************/
