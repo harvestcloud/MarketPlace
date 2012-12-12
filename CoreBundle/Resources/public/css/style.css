@@ -93,6 +93,7 @@ main containers
 
 #content
 {
+    min-height: 40em;
     padding-top: 2em;
     padding-bottom: 2em;
 }
@@ -105,40 +106,48 @@ header
 
 #header
 {
-  padding-top: 3em;
 }
 
 #header div.main_logo
 {
-    width: 45em;
+    width: 50%;
     float: left;
+}
+
+#header div.main_logo a
+{
+    background: transparent url(/bundles/marketplacecore/images/header_logo.png) scroll no-repeat left 1px;
+    display: block;
+    height: 4.8em;
+}
+
+#header div.main_logo a span
+{
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
 }
 
 #header div.main.nav
 {
     text-transform: uppercase;
+    width: 50%;
+    float: left;
 }
 
 #header div.main.nav a
 {
-    margin-right: 0.5em;
     display: block;
-    padding: 1.2em 0;
-    width: 8em;
-    max-width: 20%;
+    padding: 1.8em 0 1.2em 0;
+    width: 25%;
     float: left;
     text-align: center;
     line-height: 100%;
     font-size: 120%;
     font-weight: bold;
-    text-shadow: 0 0 2px rgba(0,0,0, 0.4);
-    color: #fff;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    text-shadow: 0 1px 1px rgba(255,255,255, 0.4);
+    color: rgba(0,0,0, 0.6);
 }
 
 #header div.main.nav a:first-of-type
@@ -147,12 +156,7 @@ header
 
 #header div.main.nav a.settings
 {
-    -webkit-border-top-right-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-topright: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     max-width: 15%;
     padding: 0.66666666em 0 0.5em 0;
 }
@@ -163,7 +167,7 @@ body.hub #header div.main.nav a.hub,
 body.settings #header div.main.nav a.settings,
 body.settings #header div.main.nav a.cart
 {
-    background: rgba(149,135,112, 0.4);
+    background: transparent  url(/bundles/marketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
 }
 
 body #header div.main.nav a.buy:hover,
@@ -172,12 +176,7 @@ body #header div.main.nav a.hub:hover,
 body #header div.main.nav a.settings:hover,
 body #header div.main.nav a.cart:hover
 {
-    background: rgba(149,135,112, 0.8);
-}
-
-#header div.main_logo img
-{
-    max-width: 60%;
+    background: rgba(149,135,112, 0.8)  url(/bundles/marketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
 }
 
 #header div.main.nav a.cart,
@@ -188,8 +187,6 @@ body #header div.main.nav a.cart:hover
 
 #header div.main.nav a.cart
 {
-    width: 10em;
-    max-width: 25%;
     margin-right: 0;
 }
 

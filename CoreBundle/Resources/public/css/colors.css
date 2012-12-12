@@ -55,7 +55,7 @@ body.hub div.main.nav a.hub,
 body.settings div.main.nav a.settings,
 body.settings div.main.nav a.cart
 {
-    background: rgba(149,135,112, 0.4);
+/*    background: rgba(149,135,112, 0.4); */
 }
 
 body div.main.nav a.buy:hover,
@@ -64,7 +64,7 @@ body div.main.nav a.hub:hover,
 body div.main.nav a.settings:hover,
 body div.main.nav a.cart:hover
 {
-    background: rgba(149,135,112, 0.8);
+/*    background: rgba(149,135,112, 0.8); */
 }
 
 /******************************************************************************
