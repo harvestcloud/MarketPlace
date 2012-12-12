@@ -198,8 +198,8 @@ body #header div.main.nav a.cart:hover
 
 
 
-@media only screen and (max-width: 360px) {
-
+@media only screen and (max-width: 555px) /* below which logo would break */
+{
     #header div.main_logo
     {
         width: 20%;
