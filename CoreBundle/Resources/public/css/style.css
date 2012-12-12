@@ -123,10 +123,10 @@ header
 
 #header div.main_logo a span
 {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
 }
 
 #header div.main.nav
