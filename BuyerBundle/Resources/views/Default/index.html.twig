@@ -7,12 +7,20 @@
         {% for product in products %}
             <a class="product tile" href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
                 <h3>{{ product.0.name }}</h3>
-                <div class="profile_picture"><img src="/images/sandbox/avatars/{{ product.0.seller.avatarName }}.png" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" /></div>
-                <h4 class="seller">{{ product.0.seller.name }}</h4>
-                <div class="location_and_distance">
-                    <span class="location">{{ product.0.location.cityState }}</span>
-                    <span class="distance">{{ product.distance|number_format(1) }} miles</span>
-                </div><!-- .location_and_distance -->
+                <div class="product_picture"><img src="/images/sandbox/products/{{ product.0.category.slug }}.jpg" alt="{{ product.0.name }}" title="{{ product.0.name }}" /></div>
+                <div class="seller">
+                    <div class="profile_picture">
+                        <img src="/images/sandbox/avatars/{{ product.0.seller.avatarName }}.png" alt="{{ product.0.seller.name }}" title="{{ product.0.seller.name }}" />
+                    </div><!-- .profile_picture -->
+                    <div class="info">
+                        <h4 class="seller">{{ product.0.seller.name }}</h4>
+                        <div class="location_and_distance">
+                            <span class="location">{{ product.0.location.cityState }}</span>
+                            <span class="distance">{{ product.distance|number_format(1) }} miles</span>
+                        </div><!-- .location_and_distance -->
+                    </div><!-- .info -->
+                    <div class="clear"></div>
+                </div><!-- .seller -->
                 <div class="price_and_quantity">
                     <strong class="price">${{ product.0.price }}</strong>
                     <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
