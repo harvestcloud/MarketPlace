@@ -61,8 +61,8 @@ Buyer_profile:
 
 
 Buyer_cart_add_product:
-    pattern:  /cart/add-product/{product_id}
-    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Cart:addProduct }
+    pattern:  /cart/add-product/{id}/{quantity}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Cart:addProduct, quantity: 1 }
     requirements:
         _method: POST
 

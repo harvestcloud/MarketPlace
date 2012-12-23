@@ -10,10 +10,14 @@
 namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 
 use HarvestCloud\MarketPlace\BuyerBundle\Controller\BuyerController as Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use HarvestCloud\CoreBundle\Entity\OrderCollection;
 use HarvestCloud\CoreBundle\Entity\Order;
 use HarvestCloud\CoreBundle\Entity\OrderLineItem;
+use HarvestCloud\CoreBundle\Entity\Product;
 
 /**
  * CartController
@@ -95,69 +99,56 @@ class CartController extends Controller
      *
      * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
      * @since  2012-04-09
-     * @todo   refactor as much as possible to model
-     * @todo   refactor finding order for Product
      *
-     * @param  int  $product_id
+     * @Route("/cart/add-product/{id}/{quantity}")
+     * @ParamConverter("product", class="HarvestCloudCoreBundle:Product")
+     *
+     * @param  Product  $product
      */
-    public function addProductAction($product_id)
+    public function addProductAction(Product $product, $quantity)
     {
-        $product = $this->getDoctrine()
-            ->getRepository('HarvestCloudCoreBundle:Product')
-            ->find($product_id);
-
-        if (!$product)
-        {
-            throw $this->createNotFoundException('No product found for id '.$product_id);
-        }
-
         // Find OrderCollection
-        $session = $this->getRequest()->getSession();
+        $orderCollection = $this->getOrderCollection();
 
-        $buyer = $this->getCurrentProfile();
+        // Add Product to OrderCollection
+        $lineItem = $orderCollection->addProduct($product, $quantity);
+
+        // Persisting cascades to Order and OrderCollection
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($lineItem);
+        $em->flush();
+
+        // Save the OrderCollection to the session
+        $this->getRequest()->getSession()->set('cart_id', $orderCollection->getId());
+
+        return $this->redirect($this->generateUrl('Buyer_product_show', array(
+            'id'   => $product->getId(),
+            'path' => $product->getCategoryPath(),
+        )));
+    }
+
+    /**
+     * getOrderCollection()
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2012-12-22
+     *
+     * @return \HarvestCloud\CoreBundle\Entity\OrderCollection
+     */
+    public function getOrderCollection()
+    {
+        $session = $this->getRequest()->getSession();
+        $buyer   = $this->getCurrentProfile();
 
         $orderCollection = $this->getRepo('OrderCollection')
             ->find($session->get('cart_id'));
 
-        // Create an OrderCollection if we don't have one
         if (!$orderCollection)
         {
             $orderCollection = new OrderCollection();
             $orderCollection->setBuyer($buyer);
         }
 
-        // Create an Order if we don't have one
-        if (!$order = $orderCollection->getOrderForSeller($product->getSeller()))
-        {
-            $order = $orderCollection->createOrderForSeller($product->getSeller());
-        }
-
-        if ($lineItem = $order->getLineItemForProduct($product))
-        {
-            $lineItem->setQuantity($lineItem->getQuantity()+1);
-        }
-        else
-        {
-            $lineItem = $order->createLineItemForProduct($product);
-        }
-
-        // Update price
-        $lineItem->setPrice($product->getPrice());
-
-        // Update order sub_total and total
-        $order->updateTotals();
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($orderCollection);
-        $em->persist($order);
-        $em->persist($lineItem);
-        $em->flush();
-
-        $session->set('cart_id', $orderCollection->getId());
-
-        return $this->redirect($this->generateUrl('Buyer_product_show', array(
-            'id'   => $product_id,
-            'path' => $product->getCategoryPath(),
-        )));
+        return $orderCollection;
     }
 }
