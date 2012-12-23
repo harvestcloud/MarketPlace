@@ -25,6 +25,9 @@
                     <strong class="price">${{ product.0.price }}</strong>
                     <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
                 </div>
+                <div class="quantity_in_cart">
+                  {{ product.0.quantityInCart }} in cart
+                </div><!-- .quantity_in_cart -->
             </a><!-- .product.tile -->
         {% endfor %}
         <div class="clear"></div>

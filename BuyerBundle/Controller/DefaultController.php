@@ -38,7 +38,7 @@ class DefaultController extends Controller
         $filter->setRange(100);
 
         $products = $this->getRepo('Product')
-            ->findForSearchFilter($filter)
+            ->findForSearchFilter($filter, $this->getCurrentCart())
         ;
 
         return $this->render('HarvestCloudMarketPlaceBuyerBundle:Default:index.html.twig', array(

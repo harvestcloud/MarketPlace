@@ -29,6 +29,10 @@
                     <th><abbr title="Quantity">Qty</abbr> available</th>
                     <td>{{ product.quantityAvailable }}</td>
                 </tr>
+                <tr>
+                    <th><abbr title="Quantity">Qty</abbr> in cart</th>
+                    <td>{{ quantity_in_cart }}</td>
+                </tr>
             </table><!-- .nvp -->
             <form action="{{ path('Buyer_cart_add_product', { 'id': product.id }) }}" method="post">
                 <div class="form row">

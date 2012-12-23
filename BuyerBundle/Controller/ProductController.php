@@ -9,7 +9,10 @@
 
 namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HarvestCloud\MarketPlace\BuyerBundle\Controller\BuyerController as Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use HarvestCloud\CoreBundle\Entity\Product;
 use HarvestCloud\CoreBundle\Form\ProductType;
@@ -28,21 +31,16 @@ class ProductController extends Controller
      * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
      * @since  2012-04-07
      *
-     * @param  int  $id  Product::id
+     * @Route("/{path}/{id}")
+     * @ParamConverter("product", class="HarvestCloudCoreBundle:Product")
+     *
+     * @param  Product  $product
      */
-    public function showAction($id)
+    public function showAction(Product $product)
     {
-        $product = $this->getDoctrine()
-            ->getRepository('HarvestCloudCoreBundle:Product')
-            ->find($id);
-
-        if (!$product)
-        {
-            throw $this->createNotFoundException('No product found for id '.$id);
-        }
-
         return $this->render('HarvestCloudMarketPlaceBuyerBundle:Product:show.html.twig', array(
-          'product' => $product,
+          'product'          => $product,
+          'quantity_in_cart' => $this->getCurrentCart()->getQuantity($product),
         ));
     }
 }
