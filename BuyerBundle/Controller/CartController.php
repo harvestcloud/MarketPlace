@@ -108,7 +108,7 @@ class CartController extends Controller
     public function addProductAction(Product $product, $quantity)
     {
         // Find OrderCollection
-        $orderCollection = $this->getOrderCollection();
+        $orderCollection = $this->getCurrentCart();
 
         // Add Product to OrderCollection
         $lineItem = $orderCollection->addProduct($product, $quantity);
@@ -125,30 +125,5 @@ class CartController extends Controller
             'id'   => $product->getId(),
             'path' => $product->getCategoryPath(),
         )));
-    }
-
-    /**
-     * getOrderCollection()
-     *
-     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
-     * @since  2012-12-22
-     *
-     * @return \HarvestCloud\CoreBundle\Entity\OrderCollection
-     */
-    public function getOrderCollection()
-    {
-        $session = $this->getRequest()->getSession();
-        $buyer   = $this->getCurrentProfile();
-
-        $orderCollection = $this->getRepo('OrderCollection')
-            ->find($session->get('cart_id'));
-
-        if (!$orderCollection)
-        {
-            $orderCollection = new OrderCollection();
-            $orderCollection->setBuyer($buyer);
-        }
-
-        return $orderCollection;
     }
 }

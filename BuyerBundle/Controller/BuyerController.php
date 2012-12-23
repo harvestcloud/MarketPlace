@@ -31,9 +31,16 @@ class BuyerController extends Controller
     public function getCurrentCart()
     {
         $session = $this->getRequest()->getSession();
+        $buyer   = $this->getCurrentProfile();
 
         $orderCollection = $this->getRepo('OrderCollection')
             ->find($session->get('cart_id'));
+
+        if (!$orderCollection)
+        {
+            $orderCollection = new OrderCollection();
+            $orderCollection->setBuyer($buyer);
+        }
 
         return $orderCollection;
     }
