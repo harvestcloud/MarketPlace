@@ -110,16 +110,23 @@ class CartController extends Controller
         // Find OrderCollection
         $orderCollection = $this->getCurrentCart();
 
-        // Add Product to OrderCollection
-        $lineItem = $orderCollection->addProduct($product, $quantity);
+        try
+        {
+            // Add Product to OrderCollection
+            $lineItem = $orderCollection->addProduct($product, $quantity);
 
-        // Persisting cascades to Order and OrderCollection
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($lineItem);
-        $em->flush();
+            // Persisting cascades to Order and OrderCollection
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($lineItem);
+            $em->flush();
 
-        // Save the OrderCollection to the session
-        $this->getRequest()->getSession()->set('cart_id', $orderCollection->getId());
+            // Save the OrderCollection to the session
+            $this->getRequest()->getSession()->set('cart_id', $orderCollection->getId());
+        }
+        catch (\Exception $e)
+        {
+            // could not add Product to cart
+        }
 
         return $this->redirect($this->generateUrl('Buyer_product_show', array(
             'id'   => $product->getId(),
