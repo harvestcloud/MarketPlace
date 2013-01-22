@@ -98,7 +98,9 @@ class CheckoutController extends Controller
      */
     public function reviewAction()
     {
-        return $this->render('HarvestCloudMarketPlaceBuyerBundle:Checkout:review.html.twig');
+        return $this->render('HarvestCloudMarketPlaceBuyerBundle:Checkout:review.html.twig', array(
+            'orderCollection' => $this->getOrderCollection(),
+        ));
     }
 
     /**

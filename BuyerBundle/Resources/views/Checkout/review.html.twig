@@ -3,9 +3,34 @@
 {% block buyer_content %}
     <h1>Review Order</h1>
     <p>Alright, we're almost there! Time to make one last pre-flight check and then hit that big ol' button</p>
+
+    <table>
+        <tbody>
+            {% for order in orderCollection.orders %}
+                <tr>
+                    <td colspan="3">{{ order.seller.name }}</td>
+                </tr>
+                {% for lineItem in order.lineItems %}
+                    <tr>
+                        <td>{{ lineItem.product.name }}</td>
+                        <td>{{ lineItem.quantity }}</td>
+                        <td>{{ lineItem.price }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td>{{ order.hub.name }}</td>
+                    <td>{{ order.sellerWindow.startTime|date("Y-m-d") }}</td>
+                    <td>{{ order.hubFee }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <p>
         <form method="post" action="{{ path('Buyer_checkout_place_order') }}">
-            <input type="submit" class="submit" value="Place order" />
+            <div class="form row">
+                <input type="submit" class="submit button" value="Place order" />
+            </div><!-- .form.row -->
         </form>
     </p>
 {% endblock %}
