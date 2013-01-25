@@ -3,7 +3,7 @@
 
 {% block seller_content %}
     <h1>Restock Product</h1>
-    <form action="{{ path('Seller_product_restock', { 'id' : product.id }) }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('Seller_restock_transaction_create', { 'id' : product.id }) }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <div class="form row">
             <input type="submit" class="submit button" value="Save" />
