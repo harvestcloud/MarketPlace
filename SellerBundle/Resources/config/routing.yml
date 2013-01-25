@@ -88,6 +88,20 @@ Seller_product_create:
     requirements:
         _method: POST
 
+Seller_product_restock:
+    pattern:  /product/{id}/restock
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:restock }
+    requirements:
+        _method: GET
+        id: \d+
+
+Seller_product_restock_save:
+    pattern:  /product/{id}/restock
+    defaults: { _controller: HarvestCloudMarketPlaceSellerBundle:Product:restock }
+    requirements:
+        _method: POST
+        id: \d+
+
 
 Seller_seller_window:
     pattern:  /seller-window

@@ -62,6 +62,11 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <form action="{{ path('Seller_product_restock', { 'id' : product.id }) }}" method="get" />
+                <div class="form row">
+                    <input type="submit" class="submit button" value="Restock" />
+                </div><!-- .form.row -->
+            </form>
         </div><!-- .right.column -->
         <div class="clear"></div>
     </div><!-- .two_equal_columns -->
