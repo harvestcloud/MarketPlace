@@ -90,6 +90,12 @@ class ProductController extends Controller
 
             if ($form->isValid())
             {
+                // If we don't have a Location yet, use the Seller's default
+                if (!$product->getLocation())
+                {
+                  $product->setLocation($this->getCurrentProfile()->getDefaultLocation());
+                }
+
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($product);
                 $em->flush();
