@@ -45,7 +45,7 @@ class CoreController extends Controller
      *
      * @return HarvestCloud\CoreBundle\Entity\User
      */
-    protected function getUser()
+    public function getUser()
     {
         return $this->get('security.context')->getToken()->getUser();
     }
