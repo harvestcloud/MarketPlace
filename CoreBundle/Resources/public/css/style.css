@@ -88,7 +88,7 @@ main containers
 
 #contentWrapper
 {
-    background: #fff3e0 url(/bundles/marketplacecore/images/bg_body.png) scroll repeat center top;
+    background: #fff3e0 url(/bundles/harvestcloudmarketplacecore/images/bg_body.png) scroll repeat center top;
 }
 
 #content
@@ -116,7 +116,7 @@ header
 
 #header div.main_logo a
 {
-    background: transparent url(/bundles/marketplacecore/images/header_logo.png) scroll no-repeat left 1px;
+    background: transparent url(/bundles/harvestcloudmarketplacecore/images/header_logo.png) scroll no-repeat left 1px;
     display: block;
     height: 4.8em;
 }
@@ -167,7 +167,7 @@ body.hub #header div.main.nav a.hub,
 body.settings #header div.main.nav a.settings,
 body.settings #header div.main.nav a.cart
 {
-    background: transparent  url(/bundles/marketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
+    background: transparent  url(/bundles/harvestcloudmarketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
 }
 
 body #header div.main.nav a.buy:hover,
@@ -176,7 +176,7 @@ body #header div.main.nav a.hub:hover,
 body #header div.main.nav a.settings:hover,
 body #header div.main.nav a.cart:hover
 {
-    background: rgba(149,135,112, 0.8)  url(/bundles/marketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
+    background: rgba(149,135,112, 0.8)  url(/bundles/harvestcloudmarketplacecore/images/bg_tab.png) scroll no-repeat center bottom;
 }
 
 #header div.main.nav a.cart,
