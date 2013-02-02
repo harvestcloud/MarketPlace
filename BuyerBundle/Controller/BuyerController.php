@@ -33,14 +33,22 @@ class BuyerController extends Controller
         $session = $this->getRequest()->getSession();
         $buyer   = $this->getCurrentProfile();
 
-        $orderCollection = $this->getRepo('OrderCollection')
-            ->find($session->get('cart_id'));
-
-        if (!$orderCollection)
+        // Check if we have a reference to the cart in the session
+        if ($session->get('cart_id'))
         {
-            $orderCollection = new OrderCollection();
-            $orderCollection->setBuyer($buyer);
+            $orderCollection = $this->getRepo('OrderCollection')
+                ->find($session->get('cart_id'));
+
+            // Check if a cart really exists
+            if ($orderCollection)
+            {
+                return $orderCollection;
+            }
         }
+
+        // Cannot find existing cart, create a new one
+        $orderCollection = new OrderCollection();
+        $orderCollection->setBuyer($buyer);
 
         return $orderCollection;
     }
