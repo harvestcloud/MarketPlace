@@ -158,17 +158,16 @@ class CheckoutController extends Controller
             $em->persist($order);
 
             // Seller Journal entry
-            $journal = new \HarvestCloud\DoubleEntryBundle\Entity\Journal();
-            $journal->setType('PAYMENT');
+            $journal = new \HarvestCloud\DoubleEntryBundle\Entity\PaymentJournal();
 
             // Bank posting
             $bankPosting = new \HarvestCloud\DoubleEntryBundle\Entity\Posting();
-            $bankPosting->setAccount($order->getSeller()->getBankAccount());
+            $bankPosting->setAccount($order->getSeller()->getSalesAccount());
             $bankPosting->setAmount($order->getAmountForPaymentGateway());
 
             // A/P posting
             $apPosting = new \HarvestCloud\DoubleEntryBundle\Entity\Posting();
-            $apPosting->setAccount($order->getSeller()->getAPAccount());
+            $apPosting->setAccount($order->getSeller()->getAccountsPayableAccount());
             $apPosting->setAmount(-1*$order->getAmountForPaymentGateway());
 
             $journal->addPosting($bankPosting);
