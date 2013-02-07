@@ -19,11 +19,17 @@ Profile_edit:
 
 
 
+
+Profile_account:
+    pattern:  /account
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Account:index }
+
 Profile_account_create_set:
     pattern:  /account/create-set
     defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Account:create_set }
     requirements:
         _method: POST
+
 
 
 

@@ -1,0 +1,22 @@
+{% extends 'HarvestCloudMarketPlaceProfileBundle::layout.html.twig' %}
+
+{% block content %}
+    <h1>Accounts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Account</th>
+                <th>Current Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for account in profile.accounts %}
+                <tr>
+                    <td>{{ account.name }}</td>
+                    <td>{{ account.balance }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

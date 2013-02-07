@@ -22,6 +22,19 @@ use HarvestCloud\CoreBundle\Form\ProfileType;
 class AccountController extends Controller
 {
     /**
+     * index
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2013-02-06
+     */
+    public function indexAction()
+    {
+        return $this->render('HarvestCloudMarketPlaceProfileBundle:Account:index.html.twig', array(
+            'profile' => $this->getCurrentProfile(),
+        ));
+    }
+
+    /**
      * create_set
      *
      * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
