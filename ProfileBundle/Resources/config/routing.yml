@@ -23,6 +23,15 @@ Profile_edit:
 Profile_account:
     pattern:  /account
     defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Account:index }
+    requirements:
+        _method: GET
+
+Profile_account_show:
+    pattern:  /account/{slug}
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Account:show }
+    requirements:
+        slug:    "[a-z0-9-]+"
+        _method: GET
 
 Profile_account_create_set:
     pattern:  /account/create-set

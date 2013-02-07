@@ -12,6 +12,7 @@ namespace HarvestCloud\MarketPlace\ProfileBundle\Controller;
 use HarvestCloud\MarketPlace\ProfileBundle\Controller\ProfileController as Controller;
 use Symfony\Component\HttpFoundation\Request;
 use HarvestCloud\CoreBundle\Form\ProfileType;
+use HarvestCloud\DoubleEntryBundle\Entity\Account;
 
 /**
  * AccountController
@@ -31,6 +32,29 @@ class AccountController extends Controller
     {
         return $this->render('HarvestCloudMarketPlaceProfileBundle:Account:index.html.twig', array(
             'profile' => $this->getCurrentProfile(),
+        ));
+    }
+
+    /**
+     * show
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2013-02-06
+     */
+    public function showAction($slug)
+    {
+        $account = $this
+            ->getDoctrine()
+            ->getRepository('HarvestCloudDoubleEntryBundle:Account')
+            ->findOneBy(array(
+                'profile' => $this->getCurrentProfile(),
+                'slug'    => $slug
+            ))
+        ;
+
+        return $this->render('HarvestCloudMarketPlaceProfileBundle:Account:show.html.twig', array(
+            'profile' => $this->getCurrentProfile(),
+            'account' => $account,
         ));
     }
 
