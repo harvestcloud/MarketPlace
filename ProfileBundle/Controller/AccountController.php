@@ -52,9 +52,16 @@ class AccountController extends Controller
             ))
         ;
 
+        $postings = $this
+            ->getDoctrine()
+            ->getRepository('HarvestCloudDoubleEntryBundle:Account')
+            ->findPostingsForAccount($account)
+        ;
+
         return $this->render('HarvestCloudMarketPlaceProfileBundle:Account:show.html.twig', array(
-            'profile' => $this->getCurrentProfile(),
-            'account' => $account,
+            'profile'  => $this->getCurrentProfile(),
+            'account'  => $account,
+            'postings' => $postings,
         ));
     }
 
