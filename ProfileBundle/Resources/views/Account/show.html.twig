@@ -5,7 +5,7 @@
     <table>
         <thead>
             <tr>
-                <th>Journal</th>
+                <th>Description</th>
                 <th>Offset Account</th>
                 <th>Amount</th>
             </tr>
@@ -14,7 +14,7 @@
             {% for posting in postings %}
 
                 <tr>
-                    <td>{{ posting.journal.id }}</a></td>
+                    <td>{{ posting.journal.description }}</a></td>
                     <td><a href="{{ path('Profile_account_show', { 'slug': posting.offsetAccount.slug }) }}">{{ posting.offsetAccount.name }}</a></td>
                     <td>{{ posting.amount }}</a></td>
                 </tr>

@@ -18,6 +18,8 @@ use HarvestCloud\CoreBundle\Entity\HubWindow;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
+use HarvestCloud\DoubleEntryBundle\Entity\OrderPrePaymentJournal;
+
 /**
  * CheckoutController
  *
@@ -158,7 +160,7 @@ class CheckoutController extends Controller
             $em->persist($order);
 
             // Seller Journal entry
-            $journal = new \HarvestCloud\DoubleEntryBundle\Entity\PaymentJournal();
+            $journal = new OrderPrePaymentJournal($order);
 
             // Bank posting
             $bankPosting = new \HarvestCloud\DoubleEntryBundle\Entity\Posting();
