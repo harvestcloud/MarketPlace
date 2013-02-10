@@ -18,7 +18,8 @@ use HarvestCloud\CoreBundle\Entity\HubWindow;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use HarvestCloud\DoubleEntryBundle\Entity\OrderPrePaymentJournal;
+use HarvestCloud\DoubleEntryBundle\Entity\Journal\BuyerOrderPrePaymentJournal;
+use HarvestCloud\DoubleEntryBundle\Entity\Journal\SellerOrderPrePaymentJournal;
 
 /**
  * CheckoutController
@@ -157,25 +158,17 @@ class CheckoutController extends Controller
         foreach ($orderCollection->getOrders() as $order)
         {
             $order->place();
-            $em->persist($order);
 
-            // Seller Journal entry
-            $journal = new OrderPrePaymentJournal($order);
+            // Buyer Journal entry
+            $buyerJournal = new BuyerOrderPrePaymentJournal($order);
+            $buyerJournal->post();
 
-            // Bank posting
-            $bankPosting = new \HarvestCloud\DoubleEntryBundle\Entity\Posting();
-            $bankPosting->setAccount($order->getSeller()->getSalesAccount());
-            $bankPosting->setAmount($order->getAmountForPaymentGateway());
+            // Buyer Journal entry
+            $sellerJournal = new SellerOrderPrePaymentJournal($order);
+            $sellerJournal->post();
 
-            // A/P posting
-            $apPosting = new \HarvestCloud\DoubleEntryBundle\Entity\Posting();
-            $apPosting->setAccount($order->getSeller()->getAccountsPayableAccount());
-            $apPosting->setAmount(-1*$order->getAmountForPaymentGateway());
-
-            $journal->addPosting($bankPosting);
-            $journal->addPosting($apPosting);
-
-            $em->persist($journal);
+            $order->addPrePaymentJournal($buyerJournal);
+            $order->addPrePaymentJournal($sellerJournal);
         }
 
         $em->persist($orderCollection);
