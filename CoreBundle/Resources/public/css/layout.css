@@ -89,11 +89,6 @@ input[type="password"]
     padding: 1em;
 }
 
-form div.form.row input.submit.button
-{
-    padding: 0.5em 2em;
-}
-
 /******************************************************************************
 
 columns

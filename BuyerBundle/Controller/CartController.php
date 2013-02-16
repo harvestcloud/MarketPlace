@@ -104,14 +104,20 @@ class CartController extends Controller
      * @ParamConverter("product", class="HarvestCloudCoreBundle:Product")
      *
      * @param  Product  $product
+     * @param  Request $request
      */
-    public function addProductAction(Product $product, $quantity)
+    public function addProductAction(Product $product, $quantity, Request $request)
     {
         // Find OrderCollection
         $orderCollection = $this->getCurrentCart();
 
         try
         {
+            if ('-' == $request->get('remove'))
+            {
+                $quantity = -1 * $quantity;
+            }
+
             // Add Product to OrderCollection
             $lineItem = $orderCollection->addProduct($product, $quantity);
 
@@ -126,6 +132,13 @@ class CartController extends Controller
         catch (\Exception $e)
         {
             // could not add Product to cart
+        }
+
+        $last_route = $request->get('referer');
+
+        if (in_array($last_route, array('_welcome')))
+        {
+            return $this->redirect($this->generateUrl($last_route));
         }
 
         return $this->redirect($this->generateUrl('Buyer_product_show', array(

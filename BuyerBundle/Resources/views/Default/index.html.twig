@@ -23,10 +23,18 @@
                 </div><!-- .seller -->
                 <div class="price_and_quantity">
                     <strong class="price">${{ product.0.price }}</strong>
-                    <span class="quantity">{{ product.0.quantityAvailable }} dozen available</span>
+                    <span class="quantity">{{ product.0.quantityAvailableForCart }} {{ product.0.unitAvailableForCart }} available</span>
                 </div>
                 <div class="quantity_in_cart">
-                  {{ product.0.quantityInCart }} in cart
+                    <form action="{{ path('Buyer_cart_add_product', { 'id': product.0.id }) }}" method="post">
+                        <div class="form row">
+                            <input type="hidden" name="referer" value="{{ app.request.attributes.get('_route') }}" />
+                            <input type="submit" class="small submit button" value="+" />
+                            <input type="submit" name="remove" class="small submit button" value="-" />
+                            &nbsp;&nbsp;
+                            {{ product.0.quantityInCart }} {{ product.0.unitInCart }} in cart
+                        </div><!-- .form.row -->
+                    </form>
                 </div><!-- .quantity_in_cart -->
             </a><!-- .product.tile -->
         {% endfor %}
