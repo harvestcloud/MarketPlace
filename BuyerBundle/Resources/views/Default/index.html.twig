@@ -29,9 +29,8 @@
                     <form action="{{ path('Buyer_cart_add_product', { 'id': product.0.id }) }}" method="post">
                         <div class="form row">
                             <input type="hidden" name="referer" value="{{ app.request.attributes.get('_route') }}" />
-                            <input type="submit" class="small submit button" value="+" />
-                            <input type="submit" name="remove" class="small submit button" value="-" />
-                            &nbsp;&nbsp;
+                            <input type="submit" name="remove" class="small submit button" value="Add to cart" />
+                            &nbsp;
                             {{ product.0.quantityInCart }} {{ product.0.unitInCart }} in cart
                         </div><!-- .form.row -->
                     </form>

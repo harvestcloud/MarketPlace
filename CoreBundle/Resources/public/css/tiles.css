@@ -22,7 +22,7 @@ div.tile.container .tile
     display: block;
     float: left;
     background-color: #fff;
-    min-height: 18em;
+    min-height: 23em;
     margin-top: 0;
     margin-bottom: 1.4em;
     margin-left: 0;
@@ -88,7 +88,7 @@ div.tile.container .product.tile .location_and_distance
 div.tile.container .product.tile .price_and_quantity
 {
   margin-top: 0.5em;
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5em;
 }
 
 div.tile.container .product.tile .price_and_quantity .quantity
