@@ -8,22 +8,39 @@
         <tbody>
             {% for order in orderCollection.orders %}
                 <tr>
-                    <td colspan="3">{{ order.seller.name }}</td>
+                    <td colspan="4"><strong>{{ order.seller.name }}</strong></td>
                 </tr>
                 {% for lineItem in order.lineItems %}
                     <tr>
-                        <td>{{ lineItem.product.name }}</td>
                         <td>{{ lineItem.quantity }}</td>
-                        <td>{{ lineItem.price }}</td>
+                        <td>{{ lineItem.product.name }}</td>
+                        <td class="currency">${{ lineItem.price }}</td>
+                        <td class="currency">${{ lineItem.subTotal }}</td>
                     </tr>
                 {% endfor %}
                 <tr>
                     <td>{{ order.hub.name }}</td>
-                    <td>{{ order.sellerWindow.startTime|date("Y-m-d") }}</td>
-                    <td>{{ order.hubFee }}</td>
+                    <td colspan="2">{{ order.sellerWindow.startTime|date('g:ia') }} - {{ order.sellerWindow.endTime|date('g:ia D j M') }}</td>
+                    <td class="currency">${{ order.hubFee }}</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><strong>Order Total</strong></td>
+                    <td class="currency"><strong>${{ order.total }}</strong></td>
+                </tr>
+                <tr>
+                  <td colspan="4">&nbsp;</td>
                 </tr>
             {% endfor %}
         </tbody>
+    </table>
+
+    <br />
+
+    <table>
+      <tr>
+        <td><strong>Grand total</strong></td>
+        <td class="currency"><strong>{{ orderCollection.total }}</strong></td>
+      </tr>
     </table>
 
     <p>
