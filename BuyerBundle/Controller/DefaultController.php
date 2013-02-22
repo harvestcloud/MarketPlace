@@ -54,6 +54,8 @@ class DefaultController extends Controller
      */
     public function browseAction($path)
     {
+        $currentProfile = $this->getCurrentProfile();
+
         $repository = $this->getDoctrine()->getRepository('HarvestCloudCoreBundle:Category');
 
         $category = $repository->findOneByPath($path);
@@ -63,22 +65,18 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('No category found for path '.$path);
         }
 
-        $products = array();
+        // Set up and empty filter
+        $filter = new ProductFilter();
+        $filter->setLatitude($currentProfile->getDefaultLocation()->getLatitude());
+        $filter->setLongitude($currentProfile->getDefaultLocation()->getLongitude());
+        $filter->setRange(100);
+        $filter->category = $category;
 
-        foreach ($category->getProducts() as $product)
-        {
-            $products[] = $product;
-        }
+        $products = $this->getRepo('Product')
+            ->findForSearchFilter($filter, $this->getCurrentCart())
+        ;
 
-        foreach ($repository->children($category) as $child)
-        {
-            foreach ($child->getProducts() as $product)
-            {
-                $products[] = $product;
-            }
-        }
-
-        return $this->render('HarvestCloudMarketPlaceBuyerBundle:Default:browse.html.twig', array(
+        return $this->render('HarvestCloudMarketPlaceBuyerBundle:Default:index.html.twig', array(
           'products' => $products,
         ));
     }

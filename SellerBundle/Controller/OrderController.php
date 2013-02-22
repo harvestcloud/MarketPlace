@@ -39,8 +39,11 @@ class OrderController extends Controller
             ->findOpenForSeller($seller)
         ;
 
+        $order = $orders[0];
+
         return $this->render('HarvestCloudMarketPlaceSellerBundle:Order:index.html.twig', array(
           'orders' => $orders,
+          'order'  => $order,
         ));
     }
 

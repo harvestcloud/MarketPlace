@@ -28,7 +28,7 @@ table th
     text-align: left;
 }
 
-td.actions form
+.actions form
 {
     float: left;
 }

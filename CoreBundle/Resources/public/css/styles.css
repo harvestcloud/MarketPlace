@@ -16,6 +16,18 @@ general
     text-align: right;
 }
 
+.center
+{
+    text-align: center;
+}
+
+h4
+{
+    font-size: 1.6em;
+    font-weight: normal;
+    margin: 1em 0 0.5em 0;
+}
+
 /******************************************************************************
 
 table
