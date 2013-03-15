@@ -1,18 +1,13 @@
 {% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
 
 {% block content %}
-    <h1>Nearby hubs (within 50 miles)</h1>
+    <h1>Nearby hubs</h1>
     <div class="two_equal_columns">
         <div class="right column">
             <div class="map_canvas" id="mapCanvas"></div>
         </div><!-- .right.column -->
         <div class="left column">
             <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Distance</th>
-                </tr>
                 {% for hub in hubs %}
                     <tr>
                       <td><a href="{{ path('Buyer_hub_show', { 'id': hub.0.id }) }}">{{ hub.0.name }}</a></td>
