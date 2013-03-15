@@ -153,12 +153,8 @@ class OrderController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $order->dispatchBySeller();
+        $order->dispatchBySeller($this->get('exchange_manager')->getExchange());
 
-        // Create invoice
-        $invoice = new \HarvestCloud\InvoiceBundle\Entity\OrderInvoice();
-        $invoice->setAmount($order->getAmountForPaymentGateway());
-        $em->persist($invoice);
         $em->persist($order);
         $em->flush();
 
