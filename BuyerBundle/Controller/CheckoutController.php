@@ -121,16 +121,13 @@ class CheckoutController extends Controller
         $orderCollection = $this->getRepo('OrderCollection')
             ->find($session->get('cart_id'));
 
-        $paymentCollection = $orderCollection->getPayPalPaymentCollection();
-
-        $paymentGateway = new PaymentGateway();
-        $responseArray = $paymentGateway->processOrderPayments($paymentCollection);
+        $orderCollection->place();
 
         $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($paymentCollection);
+        $em->persist($orderCollection);
         $em->flush();
 
-        return $this->redirect('https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey='.$responseArray['payKey']);
+        return $this->redirect($this->generateUrl('Buyer_checkout_receipt'));
     }
 
     /**
