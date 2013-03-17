@@ -30,25 +30,30 @@ class BuyerController extends Controller
      */
     public function getCurrentCart()
     {
+        // Grab the session
         $session = $this->getRequest()->getSession();
-        $buyer   = $this->getCurrentProfile();
 
         // Check if we have a reference to the cart in the session
-        if ($session->get('cart_id'))
-        {
+        if ($session->get('cart_id')) {
             $orderCollection = $this->getRepo('OrderCollection')
                 ->find($session->get('cart_id'));
 
             // Check if a cart really exists
-            if ($orderCollection)
-            {
+            if ($orderCollection) {
                 return $orderCollection;
             }
         }
 
         // Cannot find existing cart, create a new one
         $orderCollection = new OrderCollection();
-        $orderCollection->setBuyer($buyer);
+
+        // Persist new so that we get a 'cart_id'
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($orderCollection);
+        $em->flush();
+
+        // Save new cart to session
+        $session->set('cart_id', $orderCollection->getId());
 
         return $orderCollection;
     }

@@ -23,15 +23,13 @@
                         <div class="main_logo">
                             <a href="{{ path('_welcome') }}"><span>Harvest Cloud</span></a>
                         </div><!-- .main_logo -->
-                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                            <div class="main nav">
-                                <a class="buy" href="{{ path('Buyer_homepage') }}">Buy</a>
-                                <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
-                                <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
-                                <a class="cart" href="{{ path('Buyer_cart_show') }}" class="cart"><span class="hide_sub_tablet_portrait">Cart: </span>{% render "HarvestCloudMarketPlaceBuyerBundle:Cart:sub_total" %}</a>
-                                <span class="clear"></span>
-                            </div><!--.main.nav -->
-                        {% endif %}
+                        <div class="main nav">
+                            <a class="buy" href="{{ path('Buyer_homepage') }}">Buy</a>
+                            <a class="sell" href="{{ path('Seller_homepage') }}">Sell</a>
+                            <a class="hub" href="{{ path('Hub_homepage') }}">Hub</a>
+                            <a class="cart" href="{{ path('Buyer_cart_show') }}" class="cart"><span class="hide_sub_tablet_portrait">Cart: </span>{% render "HarvestCloudMarketPlaceBuyerBundle:Cart:sub_total" %}</a>
+                            <span class="clear"></span>
+                        </div><!--.main.nav -->
                         <div class="clear"></div>
                     </div><!-- .logo_and_main_nav -->
                     {% block subnav %}

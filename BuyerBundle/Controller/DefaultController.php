@@ -29,12 +29,23 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $currentProfile = $this->getCurrentProfile();
+        // We first set the currentLocation to be that of the Exchange's
+        // default Location
+        $currentLocation = $this->get('exchange_manager')
+            ->getExchange()
+            ->getProfile()
+            ->getDefaultLocation()
+        ;
 
-        // Set up and empty filter
+        // If user is authenticated, use the current Profile's default Location
+        if ($this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')){
+            $currentLocation = $this->getCurrentProfile()->getDefaultLocation();
+        }
+
+        // Set up an empty filter
         $filter = new ProductFilter();
-        $filter->setLatitude($currentProfile->getDefaultLocation()->getLatitude());
-        $filter->setLongitude($currentProfile->getDefaultLocation()->getLongitude());
+        $filter->setLatitude($currentLocation->getLatitude());
+        $filter->setLongitude($currentLocation->getLongitude());
         $filter->setRange(100);
 
         $products = $this->getRepo('Product')
