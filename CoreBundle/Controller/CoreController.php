@@ -47,7 +47,11 @@ class CoreController extends Controller
      */
     public function getUser()
     {
-        return $this->get('security.context')->getToken()->getUser();
+        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->get('security.context')->getToken()->getUser();
+        }
+
+        throw new \Exception('Not authenticated');
     }
 
     /**
