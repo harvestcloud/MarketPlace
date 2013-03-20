@@ -33,11 +33,29 @@ class OrderController extends Controller
         $buyer = $this->getCurrentProfile();
 
         $orders = $this->getRepo('Order')
-            ->findOpenForBuyer($buyer)
+            ->findForBuyer($buyer)
         ;
 
         return $this->render('HarvestCloudMarketPlaceBuyerBundle:Order:index.html.twig', array(
           'orders' => $orders,
+        ));
+    }
+
+    /**
+     * show
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2013-03-19
+     *
+     * @Route("/order/{id}")
+     * @ParamConverter("order", class="HarvestCloudCoreBundle:Order")
+     *
+     * @param  Order  $order
+     */
+    public function showAction(Order $order)
+    {
+        return $this->render('HarvestCloudMarketPlaceBuyerBundle:Order:show.html.twig', array(
+          'order' => $order,
         ));
     }
 

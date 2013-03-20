@@ -26,8 +26,12 @@ Buyer_cart_show:
 
 
 Buyer_order:
-    pattern:  /orders
+    pattern:  /order
     defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:index }
+
+Buyer_order_show:
+    pattern:  /order/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Order:show }
 
 Buyer_order_cancel:
     pattern:  /order/{id}/cancel
