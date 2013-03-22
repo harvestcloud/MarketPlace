@@ -39,7 +39,11 @@ class OrderController extends Controller
             ->findOpenForSeller($seller)
         ;
 
-        $order = $orders[0];
+        if (count($orders)) {
+            $order = $orders[0];
+        } else {
+            $order = null;
+        }
 
         return $this->render('HarvestCloudMarketPlaceSellerBundle:Order:index.html.twig', array(
           'orders' => $orders,
