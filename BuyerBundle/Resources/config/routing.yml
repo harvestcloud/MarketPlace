@@ -21,7 +21,7 @@ Buyer_hub_add:
 
 
 Buyer_cart_show:
-    pattern:  /shopping-bag
+    pattern:  /cart
     defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Cart:show }
 
 
