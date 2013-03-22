@@ -18,9 +18,6 @@ use HarvestCloud\CoreBundle\Entity\HubWindow;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-use HarvestCloud\DoubleEntryBundle\Entity\Journal\BuyerOrderPrePaymentJournal;
-use HarvestCloud\DoubleEntryBundle\Entity\Journal\SellerOrderPrePaymentJournal;
-
 /**
  * CheckoutController
  *
