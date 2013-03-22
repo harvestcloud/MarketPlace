@@ -65,6 +65,11 @@ form div.form.row input
     font-weight: bold;
 }
 
+form div.form.row h4
+{
+    font-size: 1em;
+}
+
 form div.form.row label
 {
     text-transform: uppercase;
