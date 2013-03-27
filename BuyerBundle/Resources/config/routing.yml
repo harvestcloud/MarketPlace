@@ -49,6 +49,22 @@ Buyer_order_rate:
         _method: POST
 
 
+Buyer_invoice:
+    pattern:  /invoice
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Invoice:index }
+
+Buyer_invoice_show:
+    pattern:  /invoice/{id}
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Invoice:show }
+
+Buyer_invoice_pay_with_stripe:
+    pattern:  /invoice/{id}/pay/stripe
+    defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Invoice:payWithStripe }
+    requirements:
+        id: \d+
+        _method: POST
+
+
 Buyer_seller_show:
     pattern:  /seller/{id}
     defaults: { _controller: HarvestCloudMarketPlaceBuyerBundle:Seller:show }
