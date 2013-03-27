@@ -10,8 +10,6 @@
 namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 
 use HarvestCloud\MarketPlace\BuyerBundle\Controller\BuyerController as Controller;
-use HarvestCloud\PayPalBundle\Util\PaymentGateway;
-use HarvestCloud\PayPalBundle\Entity\PayPalPaymentCollection;
 use HarvestCloud\CoreBundle\Util\Debug;
 use HarvestCloud\CoreBundle\Entity\OrderCollection;
 use HarvestCloud\CoreBundle\Entity\HubWindow;
@@ -122,51 +120,6 @@ class CheckoutController extends Controller
 
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($orderCollection);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('Buyer_checkout_receipt'));
-    }
-
-    /**
-     * complete_paypal
-     *
-     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
-     * @since  2012-05-08
-     *
-     * @return Response A Response instance
-     */
-    public function complete_paypalAction()
-    {
-        $session = $this->getRequest()->getSession();
-
-        $orderCollection = $this->getRepo('OrderCollection')
-            ->find($session->get('cart_id'));
-
-        $paymentCollection = $orderCollection->getPayPalPaymentCollection();
-
-        $paymentGateway = new PaymentGateway();
-        $paymentGateway->completeOrderPayments($paymentCollection);
-
-        $em = $this->getDoctrine()->getEntityManager();
-
-        foreach ($orderCollection->getOrders() as $order)
-        {
-            $order->place();
-
-            // Buyer Journal entry
-            $buyerJournal = new BuyerOrderPrePaymentJournal($order);
-            $buyerJournal->post();
-
-            // Buyer Journal entry
-            $sellerJournal = new SellerOrderPrePaymentJournal($order);
-            $sellerJournal->post();
-
-            $order->addPrePaymentJournal($buyerJournal);
-            $order->addPrePaymentJournal($sellerJournal);
-        }
-
-        $em->persist($orderCollection);
-        $em->persist($paymentCollection);
         $em->flush();
 
         return $this->redirect($this->generateUrl('Buyer_checkout_receipt'));
