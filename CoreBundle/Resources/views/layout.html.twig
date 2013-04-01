@@ -51,6 +51,13 @@
             </div><!-- #headerWrapper -->
             <div id="contentWrapper">
                 <div id="content">
+                    <div class="flash">
+                        {% for notice in app.session.flashbag.get('notice') %}
+                            <div class="notice">
+                                <strong class="ok">✓ ✗</strong> {{ notice }}
+                            </div><!-- .notice -->
+                        {% endfor %}
+                    </div><!-- .flash -->
                     {% block content %}
                     {% endblock %}
                 </div><!-- #content -->
