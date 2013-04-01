@@ -5,6 +5,14 @@ Profile_homepage:
 
 
 
+Profile_stripe_connect:
+    pattern:  /stripe/connect
+    defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Stripe:connect }
+    requirements:
+        _method: GET
+
+
+
 Profile_update:
     pattern:  /edit
     defaults: { _controller: HarvestCloudMarketPlaceProfileBundle:Default:edit }

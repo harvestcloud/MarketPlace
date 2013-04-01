@@ -5,6 +5,7 @@
 
     <div class="two_equal_columns">
         <div class="left column">
+            <h4>Profile Info</h4>
             <table class="nvp">
                 <tr>
                     <th>Name</th>
@@ -20,6 +21,12 @@
                 </tr>
             </table><!-- .nvp -->
         </div><!-- .left.column -->
+        <div class="right column">
+            <h4>Stripe</h4>
+            {% if profile.stripeUserId == false %}
+                <p><a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id={{ stripe_client_id }}&scope=read_write&state={{ profile.id }}"><img src="/images/connect_with_stripe.png" alt="Connect with Stripe" /></a></p>
+            {% endif %}
+        </div><!!-- .right.column -->
         <div class="clear"></div>
         <form action="{{ path('Profile_edit') }}">
             <div class="form row">
