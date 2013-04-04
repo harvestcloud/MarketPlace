@@ -12,6 +12,7 @@ namespace HarvestCloud\MarketPlace\BuyerBundle\Controller;
 use HarvestCloud\MarketPlace\BuyerBundle\Controller\BuyerController as Controller;
 use HarvestCloud\InvoiceBundle\Entity\Invoice;
 use HarvestCloud\PaymentBundle\Entity\InvoicePayment;
+use HarvestCloud\PaymentBundle\Entity\SavedCreditCard;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
@@ -112,22 +113,109 @@ class InvoiceController extends Controller
         $token  = $_POST['stripeToken'];
 
         try {
+            // First create a Stripe customer
+            $customer = \Stripe_Customer::create(array(
+              'card'        => $token,
+              'description' => '#'.$invoice->getCustomer()->getId().' '.$invoice->getCustomer()->getName(),
+            ));
+
             $charge = \Stripe_Charge::create(array(
-                'card'        => $token,
+                'customer'    => $customer->id,
                 'amount'      => floor($payment->getAmount()*100),
                 'currency'    => 'usd',
                 'description' => 'Invoice Payment #'.$payment->getId(),
-            ));
+            )); //, $invoice->getVendor()->getStripeAccessToken());
+
+            // Create SavedCreditCard
+            $creditCard = new \HarvestCloud\PaymentBundle\Entity\SavedCreditCard();
+            $creditCard->setPaymentServiceKey('stripe');
+            $creditCard->setPaymentServiceToken($customer->id);
+            $creditCard->setType($charge['card']['type']);
+            $creditCard->setExpiryDateFromYearAndMonth($charge['card']['exp_year'], $charge['card']['exp_month']);
+            $creditCard->setLastFourDigits($charge['card']['last4']);
+            $creditCard->setNameOnCard($charge['card']['name']);
+
+            $invoice->getCustomer()->addSavedCreditCard($creditCard);
+
+            $em->persist($invoice->getCustomer());
+            $em->flush();
+
 
             // Everything went OK, so let's post the Payment
             $payment->post();
+
+            // Create a Customer
         } catch (\Stripe_CardError $e) {
             // @todo Send some messages back to the browser
             // for now, we'll just re-throw the exception
             throw $e;
         }
 
-        // Save the Paymenti again after the post()
+        // Save the Payment again after the post()
+        $em->persist($payment);
+        $em->flush();
+
+        return $this->redirect($this->generateurl('Buyer_invoice_show', array(
+            'id' => $invoice->getId(),
+        )));
+    }
+
+    /**
+     * payWithSavedCreditCard
+     *
+     * @author Tom Haskins-Vaughan <tom@harvestcloud.com>
+     * @since  2013-04-03
+     *
+     * @Route("/invoice/{id}/pay/saved-credi-card/{saved_credit_card_id}")
+     * @ParamConverter("creditCard", class="HarvestCloudPaymentBundle:SavedCreditCard",
+     *        options={"id" = "saved_credit_card_id"})
+     *
+     * @param  Invoice  $invoice
+     */
+    public function payWithSavedCreditCardAction(Invoice $invoice, SavedCreditCard $creditCard)
+    {
+        $buyer = $this->get('security.context')
+            ->getToken()
+            ->getUser()
+            ->getCurrentProfile()
+        ;
+
+        if ($buyer !== $invoice->getCustomer()) {
+            throw new NotFoundHttpException('Buyer is not Invoice Customer');
+        }
+
+        // First we need to create a payment
+        $payment = new InvoicePayment(array($invoice));
+
+        // Save the Payment, so that we get an id
+        $em = $this->get('doctrine')->getEntityManager();
+        $em->persist($payment);
+        $em->flush();
+
+        $this->get('payment.stripe');
+
+        try {
+            // First create a Stripe customer
+            $customer = \Stripe_Customer::retrieve($creditCard->getPaymentServiceToken());
+
+            $charge = \Stripe_Charge::create(array(
+                'customer'    => $customer->id,
+                'amount'      => floor($payment->getAmount()*100),
+                'currency'    => 'usd',
+                'description' => 'Invoice Payment #'.$payment->getId(),
+            )); //, $invoice->getVendor()->getStripeAccessToken());
+
+            // Everything went OK, so let's post the Payment
+            $payment->post();
+
+            // Create a Customer
+        } catch (\Stripe_CardError $e) {
+            // @todo Send some messages back to the browser
+            // for now, we'll just re-throw the exception
+            throw $e;
+        }
+
+        // Save the Payment again after the post()
         $em->persist($payment);
         $em->flush();
 
