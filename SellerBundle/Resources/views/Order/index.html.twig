@@ -34,47 +34,47 @@
                           <td class="actions">
                               {% if order.canBeAcceptedBySeller %}
                                   <form action="{{ path('Seller_order_accept', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Accept" />
+                                      <input type="submit" class="submit button" value="Accept" />
                                   </form>
                               {% endif %}
                               {% if order.canBeRejectedBySeller %}
                                   <form action="{{ path('Seller_order_reject', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Reject" />
+                                      <input type="submit" class="submit button" value="Reject" />
                                   </form>
                               {% endif %}
                               {% if order.canBePickedBySeller %}
                                   <form action="{{ path('Seller_order_pick', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Pick" />
+                                      <input type="submit" class="submit button" value="Pick" />
                                   </form>
                               {% endif %}
                               {% if order.canBeMarkedReadyForDispatchedBySeller %}
                                   <form action="{{ path('Seller_order_mark_ready_for_dispatch', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Ready for dispatch" />
+                                      <input type="submit" class="submit button" value="Ready for dispatch" />
                                   </form>
                               {% endif %}
                               {% if order.canBeDispatchedBySeller %}
                                   <form action="{{ path('Seller_order_dispatch', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Dispatch" />
+                                      <input type="submit" class="submit button" value="Dispatch" />
                                   </form>
                               {% endif %}
                               {% if order.canBeCanceledByBuyer %}
                                   <form action="{{ path('Buyer_order_cancel', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Cancel" />
+                                      <input type="submit" class="submit button" value="Cancel" />
                                   </form>
                               {% endif %}
                               {% if order.canBeReceivedByHub %}
                                   <form action="{{ path('Hub_order_receive', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Receive" />
+                                      <input type="submit" class="submit button" value="Receive" />
                                   </form>
                               {% endif %}
                               {% if order.canBeMarkedReadyToBePickedUpFromHub %}
                                   <form action="{{ path('Hub_order_mark_as_ready_to_pickup', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Ready to pick up" />
+                                      <input type="submit" class="submit button" value="Ready to pick up" />
                                   </form>
                               {% endif %}
                               {% if order.canBeReleasedByHub %}
                                   <form action="{{ path('Hub_order_release', { 'id': order.id }) }}" method="post">
-                                      <input type="submit" class="submit" value="Release" />
+                                      <input type="submit" class="submit button" value="Release" />
                                   </form>
                               {% endif %}
                               <span class="clear"></span>
@@ -149,47 +149,47 @@
                     <h4>Actions</h4>
                     {% if order.canBeAcceptedBySeller %}
                         <form action="{{ path('Seller_order_accept', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Accept" />
+                            <input type="submit" class="submit button" value="Accept" />
                         </form>
                     {% endif %}
                     {% if order.canBeRejectedBySeller %}
                         <form action="{{ path('Seller_order_reject', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Reject" />
+                            <input type="submit" class="submit button" value="Reject" />
                         </form>
                     {% endif %}
                     {% if order.canBePickedBySeller %}
                         <form action="{{ path('Seller_order_pick', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Pick" />
+                            <input type="submit" class="submit button" value="Pick" />
                         </form>
                     {% endif %}
                     {% if order.canBeMarkedReadyForDispatchedBySeller %}
                         <form action="{{ path('Seller_order_mark_ready_for_dispatch', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Ready for dispatch" />
+                            <input type="submit" class="submit button" value="Ready for dispatch" />
                         </form>
                     {% endif %}
                     {% if order.canBeDispatchedBySeller %}
                         <form action="{{ path('Seller_order_dispatch', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Dispatch" />
+                            <input type="submit" class="submit button" value="Dispatch" />
                         </form>
                     {% endif %}
                     {% if order.canBeCanceledByBuyer %}
                         <form action="{{ path('Buyer_order_cancel', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Cancel" />
+                            <input type="submit" class="submit button" value="Cancel" />
                         </form>
                     {% endif %}
                     {% if order.canBeReceivedByHub %}
                         <form action="{{ path('Hub_order_receive', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Receive" />
+                            <input type="submit" class="submit button" value="Receive" />
                         </form>
                     {% endif %}
                     {% if order.canBeMarkedReadyToBePickedUpFromHub %}
                         <form action="{{ path('Hub_order_mark_as_ready_to_pickup', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Ready to pick up" />
+                            <input type="submit" class="submit button" value="Ready to pick up" />
                         </form>
                     {% endif %}
                     {% if order.canBeReleasedByHub %}
                         <form action="{{ path('Hub_order_release', { 'id': order.id }) }}" method="post">
-                            <input type="submit" class="submit" value="Release" />
+                            <input type="submit" class="submit button" value="Release" />
                         </form>
                     {% endif %}
                     <div class="clear"></div>
