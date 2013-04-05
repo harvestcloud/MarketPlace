@@ -6,7 +6,7 @@
     <div class="tile container">
         {% for product in products %}
             <div class="product tile">
-                <h3>{{ product.0.name }}</h3>
+                <h3><a href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">{{ product.0.name }}</a></h3>
                 <div class="product_picture">
                     <a href="{{ path('Buyer_product_show', { 'id': product.0.id, 'path': product.0.category.path }) }}">
                         <img src="/images/sandbox/products/{{ product.0.category.slug }}.jpg" alt="{{ product.0.name }}" title="{{ product.0.name }}" /></a>

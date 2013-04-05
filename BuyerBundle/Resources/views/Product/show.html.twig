@@ -1,5 +1,6 @@
 {% extends 'HarvestCloudMarketPlaceBuyerBundle::layout.html.twig' %}
 
+{% block body_class %}buyer_product_show{% endblock %}
 {% block buyer_content %}
     <h1>{{ product.name }}</h1>
     <div class="two_equal_columns">
@@ -34,9 +35,9 @@
                     <td>{{ quantity_in_cart }}</td>
                 </tr>
             </table><!-- .nvp -->
-            <form action="{{ path('Buyer_cart_add_product', { 'id': product.id }) }}" method="post">
+            <form class="add_to_cart" action="{{ path('Buyer_cart_add_product', { 'id': product.id }) }}" method="post">
                 <div class="form row">
-                    <input type="submit"  class="submit button" value="Add to cart" />
+                    <input type="text" size="3" name="quantity"  value="1"/><input type="submit"  class="submit button" value="Add to cart" />
                 </div><!-- .form.row -->
             </form>
             <form action="{{ path('Buyer_cart_add_product', { 'id': product.id, 'quantity': -1 }) }}" method="post">

@@ -210,6 +210,19 @@ body #header div.main.nav a.cart:hover
     }
 }
 
+body.buyer_product_show .add_to_cart input[type="text"]
+{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 2.357142857em;
+}
+
+body.buyer_product_show .add_to_cart input[type="submit"]
+{
+    margin: 0;
+}
+
 /******************************************************************************
 
 form

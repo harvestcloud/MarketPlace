@@ -112,6 +112,7 @@ div.tile.container .product.tile .add_to_cart input
 div.tile.container .product.tile .add_to_cart input[type="submit"]
 {
     height: 21px;
+    padding: 0 1em;
 }
 
 div.tile.container .product.tile .location_and_distance .distance
