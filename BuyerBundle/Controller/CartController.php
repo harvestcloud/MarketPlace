@@ -111,7 +111,7 @@ class CartController extends Controller
         // Find OrderCollection
         $orderCollection = $this->getCurrentCart();
 
-        $quantity = (int) $_POST['quantity'];
+        $quantity = array_key_exists('quantity', $_POST) ? (int) $_POST['quantity'] : $quantity;
 
         try
         {
@@ -127,6 +127,20 @@ class CartController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($lineItem);
             $em->flush();
+
+            if ($quantity > 0) {
+                $notice = 'Added '.$quantity.' '
+                    .$product->getUnitForNumber($quantity).' of '
+                    .$product->getName().' to your cart';
+            } else {
+                $quantity = abs($quantity);
+                $notice = 'Removed '.$quantity.' '
+                    .$product->getUnitForNumber($quantity).' of '
+                    .$product->getName().' from your cart';
+            }
+
+            // Set flash message
+            $this->get('session')->getFlashBag()->add('notice', $notice);
 
             // Save the OrderCollection to the session
             $this->getRequest()->getSession()->set('cart_id', $orderCollection->getId());
