@@ -228,8 +228,8 @@ input.submit.button
 
 input.small.submit.button
 {
-    padding: 0.1em 0.4em 0 0.4em;
-    font-size: 0.8em;
+    padding: 0.3em 0.5em;
+    font-size: 1em;
 }
 
 /******************************************************************************

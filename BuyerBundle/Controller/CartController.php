@@ -111,6 +111,8 @@ class CartController extends Controller
         // Find OrderCollection
         $orderCollection = $this->getCurrentCart();
 
+        $quantity = (int) $_POST['quantity'];
+
         try
         {
             if ('-' == $request->get('remove'))

@@ -96,6 +96,24 @@ div.tile.container .product.tile .price_and_quantity .quantity
     margin-left: 1em;
 }
 
+div.tile.container .product.tile .add_to_cart
+{
+    margin-top: 1em;
+}
+
+div.tile.container .product.tile .add_to_cart input
+{
+    height: 19px;
+    padding: 0 0.3em;
+    font-size: 1em;
+    text-align: center;
+}
+
+div.tile.container .product.tile .add_to_cart input[type="submit"]
+{
+    height: 21px;
+}
+
 div.tile.container .product.tile .location_and_distance .distance
 {
     display: block;
